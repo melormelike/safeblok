@@ -4,7 +4,7 @@ class CreateIncidents < ActiveRecord::Migration[6.1]
       t.string :address
       t.float :latitude
       t.float :longitude
-      t.string :type
+      t.string :category
       t.text :description
       t.string :authorities
       t.string :status
