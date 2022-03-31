@@ -7,6 +7,7 @@ class IncidentsController < ApplicationController
       {
         lat: incident.latitude,
         lng: incident.longitude
+        #info_window: render_to_string(partial: "info_window", locals: { incident: incident })
       }
     end
   end
