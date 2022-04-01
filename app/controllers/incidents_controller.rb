@@ -6,8 +6,9 @@ class IncidentsController < ApplicationController
     @markers = @incidents.geocoded.map do |incident|
       {
         lat: incident.latitude,
-        lng: incident.longitude
-        #info_window: render_to_string(partial: "info_window", locals: { incident: incident })
+        lng: incident.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { incident: incident }),
+        #image_url:helpers.asset_url("#")
       }
     end
   end
