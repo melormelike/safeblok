@@ -1,5 +1,5 @@
 class Incident < ApplicationRecord
-  CATEGORIES = ["Attempt", "Item Stolen"]
+  CATEGORIES = ["Attempt", "Item Stolen", "Violent"]
   belongs_to :user
   has_many_attached :photos
 

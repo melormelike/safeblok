@@ -1,16 +1,20 @@
-<div class="container my-4">
-  <h1>New Incident</h1>
+<div class="container-fluid my-4">
+  <h1 class="text-center">Report a new incident</h1>
   <%= simple_form_for @incident do |f| %>
-    <%= f.input :address %>
+    <%= f.input :address, :placeholder => "Address", label: false %>
     <div class="d-flex w-100">
       <%= f.input :date, as: :date, html5: true %>
       <%= f.input :time, as: :time, html5: true  %>
     </div>
-    <%= f.input :category, as: :radio_buttons, collection: Incident::CATEGORIES %>
-    <%= f.input :description, as: :text %>
+    <%= f.input :category,
+            collection: Incident::CATEGORIES,
+            as: :check_boxes,
+            input_html: { class: "tag-selector" },
+            item_wrapper_class: 'tag-item' %>
+    <%= f.input :authorities, label: "Reported to Authorities", as: :boolean %>
+    <%#= f.input :status, as: :boolean %>
+    <%= f.input :description, as: :text, :placeholder => "Describe the incident in a few lines" %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.input :authorities %>
-    <%= f.input :status %>
-    <%= f.submit %>
+    <%= f.submit class: "w-100" %>
   <% end %>
 </div>
