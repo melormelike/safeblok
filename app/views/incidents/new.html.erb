@@ -1,9 +1,7 @@
-<div class="container-fluid my-4">
+<div class="container my-4">
   <h1 class="text-center">Report a new incident</h1>
   <%= simple_form_for @incident do |f| %>
     <%= f.input :address,
-              :placeholder => "Address",
-              label: false,
               input_html: { data: { geocoder_target: "address" } },
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
     <div class="d-flex w-100">
@@ -13,7 +11,7 @@
     <%= f.input :category,
             label: false,
             collection: Incident::CATEGORIES,
-            as: :check_boxes,
+            as: :radio_buttons,
             input_html: { class: "tag-selector" },
             item_wrapper_class: 'tag-item' %>
     <%= f.input :authorities, label: "Reported to Authorities", as: :boolean %>
