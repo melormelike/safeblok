@@ -1,8 +1,24 @@
 .mapboxgl-popup {
-  transform: none !important;
-  width: 100vw;
-  position: absolute !important;
-  height: 100vh;
+
+  width: 100%;
+  // background: red;
+  // position: absolute !important;
+  // bottom: 0;
+  // left: 0;
+  height: 100%;
+}
+
+.popups {
+  position:absolute;
+  bottom:0px;
+  height: 25%;
+  width: 100%;
+  transform: translateY(60vh) !important;
+  max-width: 100% !important;
+  // transform: inherit !important;
+  transition-timing-function: ease-in;
+  /* Quick on the way out */
+  transition: 5s;
 }
 
 
@@ -22,10 +38,8 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
-  position: absolute;
-  bottom: 0px;
-  height: 50vh;
-  width: 100vw;
+  // bottom: 0;
+  display: block;
 }
 
 .map {
