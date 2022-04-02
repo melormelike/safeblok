@@ -1,10 +1,14 @@
 
 <div class="infobox">
   <div>
-    <p><%= incident.category %></p>
+    <p><i class="fas fa-bolt"></i> <%= incident.category %></p>
+    <p><%= incident.date.strftime("%A, %d %B ") %>, <%= incident.time.strftime("%-l:%M %P") %></p>
+  </div>
+  <div>
     <p><%= incident.description %></p>
   </div>
-  <p><%= incident.address %></p>
-  <p><%= incident.date %></p>
-  <p><%= incident.time %></p>
+  <div>
+    <%#= @incident.photos.each.do |photo| %>
+    <%#= cl_image_tag photo.key,  %>
+  </div>
 </div>
