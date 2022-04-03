@@ -6,8 +6,7 @@ class CreateIncidents < ActiveRecord::Migration[6.1]
       t.float :longitude
       t.string :category
       t.text :description
-      t.string :authorities
-      t.string :status
+      t.boolean :authorities
       t.date :date
       t.time :time
       t.references :user, null: false, foreign_key: true

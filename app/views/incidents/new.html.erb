@@ -2,7 +2,8 @@
   <h1 class="text-center">Report a new incident</h1>
   <%= simple_form_for @incident do |f| %>
     <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" } },
+              label: false,
+              input_html: { data: { geocoder_target: "address" }, class: "d-none" },
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
     <div class="d-flex w-100">
       <%= f.input :date, as: :date, label: false, html5: true %>
