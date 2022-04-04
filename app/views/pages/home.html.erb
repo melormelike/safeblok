@@ -4,7 +4,8 @@
   <div class="cards-incidents-global">
     <% @incidents_per_location.each do |key, value| %>
       <div class="card-incident">
-        <%= "#{key} | Incidents:#{value}" %>
+        <p class="card-incident-location-key"><%= "#{key}"%></p>
+        <p class="card-incident-location-value"><%= "#{value}" %></p>
       </div>
     <% end %>
     <br>
@@ -13,45 +14,83 @@
       <% @incidents_per_category.each do |key, value| %>
         <div class="card-incident", id="<%=key%>">
             <p><%= "#{key}" %></p>
-            <p class="card-incident-value"><%= "#{value}" %></p>
+            <p class="card-incident-category-value"><%= "#{value}" %></p>
         </div>
       <% end %>
     </div>
 
-
+<%# CHART - CATEGORIES %>
     <div>
-      <canvas id="myChart"></canvas>
+      <canvas id="categoryChart"></canvas>
     </div>
 
     <script>
-      const labels = [
+      const labels1 = [
         'Attempt',
         'Items Stolen',
       ];
 
-      const data = {
-        labels: labels,
+      const data1 = {
+        labels: labels1,
         datasets: [{
           label: 'Most common incidents',
           backgroundColor: ['rgb(255, 99, 132)', 'blue'],
           borderColor: ['rgb(255, 99, 132)', 'blue'],
-          data: [document.querySelectorAll(".card-incident-value")[0].innerText, document.querySelectorAll(".card-incident-value")[1].innerText],
+          data: [document.querySelectorAll(".card-incident-category-value")[0].innerText, document.querySelectorAll(".card-incident-category-value")[1].innerText],
         }]
       };
-      const config = {
+      const config1 = {
         type: 'pie',
-        data: data,
+        data: data1,
         options: {
         }
       };
     </script>
 
     <script>
-      const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
+      const categoryChart = new Chart(
+        document.getElementById('categoryChart'),
+        config1
       );
     </script>
+
+<%# CHART - LOCATION %>
+  <div>
+      <canvas id="locationChart"></canvas>
+    </div>
+
+    <script>
+      const labels2 = [
+        document.querySelectorAll(".card-incident-location-key")[0].innerText,
+        document.querySelectorAll(".card-incident-location-key")[1].innerText,
+      ];
+
+      const data2 = {
+        labels: labels2,
+        datasets: [{
+          label: 'Incidents per location',
+          backgroundColor: ['rgb(255, 99, 132)', 'blue'],
+          borderColor: ['rgb(255, 99, 132)', 'blue'],
+          data: [document.querySelectorAll(".card-incident-location-value")[0].innerText, document.querySelectorAll(".card-incident-location-value")[1].innerText],
+        }]
+      };
+      const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+        }
+      };
+    </script>
+
+    <script>
+      const locationChart = new Chart(
+        document.getElementById('locationChart'),
+        config2
+      );
+    </script>
+
+
+
     </div>
   </div>
 </div>
