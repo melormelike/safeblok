@@ -1,4 +1,6 @@
 class IncidentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @incidents = Incident.all
 
@@ -15,5 +17,25 @@ class IncidentsController < ApplicationController
 
   def show
     @incident = Incident.find(params[:id])
+  end
+
+  def new
+    @incident = Incident.new
+  end
+
+  def create
+    @incident = Incident.new(incident_params)
+    @incident.user = current_user
+    if @incident.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def incident_params
+    params.require(:incident).permit(:address, :date, :time, :category, :description, :photos, :authorities)
   end
 end
