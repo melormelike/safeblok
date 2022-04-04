@@ -5,7 +5,7 @@
 
 .popups {
   position:absolute;
-  bottom: 0px;
+  bottom: -50px;
   height: 25%;
   width: 100%;
   transform: translateY(60vh) !important;
@@ -35,9 +35,13 @@
   font-family: "Open Sans", sans-serif;
   display: block;
   overflow: scroll;
+  border-radius: 20px;
   // background-color: #f1f1f1 !important;
 }
-
+.mapboxgl-popup {
+  top: 15% !important;
+  will-change: none !important;
+}
 .map {
   position: absolute;
   top: 0;
