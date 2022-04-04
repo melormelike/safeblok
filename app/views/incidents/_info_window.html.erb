@@ -1,15 +1,19 @@
 
 <div class="infobox">
   <div>
-    <p><i class="fas fa-bolt"></i> <%= incident.category %></p>
+    <p><i class="fas fa-bolt"></i> <%= incident.category %> in <%=incident.address %></p>
     <p><%= incident.date.strftime("%A, %d %B ") %>, <%= incident.time.strftime("%-l:%M %P") %></p>
   </div>
   <div>
     <p><%= incident.description %></p>
   </div>
   <div>
-    <%#=@incident.photo.attached?  %>
-    <%#= @incident.photos.each.do |photo| %>
-    <%#= cl_image_tag photo.key,  %>
+    <%if incident.photos.attached? %>
+    <% incident.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class:'incident-photo'%>
+     <% end %>
+    <% else %>
+      <p>This incident has no photo<p>
+    <% end %>
   </div>
 </div>
