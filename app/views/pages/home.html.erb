@@ -1,2 +1,57 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container ms-1", data-controller="charts">
+  <h1>Statistics View</h1>
+
+  <div class="cards-incidents-global">
+    <% @incidents_per_location.each do |key, value| %>
+      <div class="card-incident">
+        <%= "#{key} | Incidents:#{value}" %>
+      </div>
+    <% end %>
+    <br>
+    <div class="card-incidents">
+      <p>Most common incidents:</p>
+      <% @incidents_per_category.each do |key, value| %>
+        <div class="card-incident", id="<%=key%>">
+            <p><%= "#{key}" %></p>
+            <p class="card-incident-value"><%= "#{value}" %></p>
+        </div>
+      <% end %>
+    </div>
+
+
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+      const labels = [
+        'Attempt',
+        'Items Stolen',
+      ];
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Most common incidents',
+          backgroundColor: ['rgb(255, 99, 132)', 'blue'],
+          borderColor: ['rgb(255, 99, 132)', 'blue'],
+          data: [document.querySelectorAll(".card-incident-value")[0].innerText, document.querySelectorAll(".card-incident-value")[1].innerText],
+        }]
+      };
+      const config = {
+        type: 'pie',
+        data: data,
+        options: {
+        }
+      };
+    </script>
+
+    <script>
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+    </script>
+    </div>
+  </div>
+</div>
