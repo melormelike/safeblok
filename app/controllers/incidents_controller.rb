@@ -2,7 +2,7 @@ class IncidentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :edit, :create, :update]
 
   def index
-    @incidents = Incident.all
+    @incidents = policy_scope(Incident)
 
     # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
     @markers = @incidents.geocoded.map do |incident|

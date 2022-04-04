@@ -1,9 +1,9 @@
 class IncidentPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve
+      scope.all
+    end
   end
 
   # def new?
@@ -19,6 +19,10 @@ class IncidentPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    user == record.user || user.admin
+  end
+
+  def destroy?
+    user == user.admin
   end
 end
