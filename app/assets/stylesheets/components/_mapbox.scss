@@ -47,9 +47,10 @@
  }
 
  .incident-photo {
-   height: 10vw;
-   width: 10vw;
+   height: 25vw;
+   width: 25vw;
    display: inline-block;
+   margin: 10px
  }
 
 @media (max-width: 540px) {
