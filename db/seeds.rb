@@ -20,3 +20,5 @@ joana = User.create!(email: "joana@gmail.com", username: "Joana", password: "123
 
 incident_1 = Incident.create!(user: User.first, category: "Item Stolen", authorities: "reported", status: "pending", address: "Canggu, Bali", date: Date.today, description: "in umalas", time: "8:00")
 incident_2 = Incident.create!(user: User.last, category: "Item Stolen", authorities: "reported", status: "pending", address: "Ubud, Bali", date: Date.today, description: "in umalas", time: "8:00")
+incident_3 = Incident.create!(user: User.last, category: "Item Stolen", authorities: "reported", status: "pending", address: "Ubud, Bali", date: Date.today, description: "in umalas", time: "8:00")
+incident_3 = Incident.create!(user: User.last, category: "Attempt", authorities: "reported", status: "pending", address: "Ubud, Bali", date: Date.today, description: "in umalas", time: "8:00")

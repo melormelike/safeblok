@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container ms-1">
+  <h1>Statistics View</h1>
+
+  <div class="cards-incidents-global">
+    <% @incidents_per_location.each do |key, value| %>
+      <div class="card-incident">
+        <%= "#{key} | Incidents:#{value}" %>
+      </div>
+    <% end %>
+    <br>
+    <div class="card-incidents">
+      <p>Most common incidents:</p>
+      <% @incidents_per_category.each do |key, value| %>
+        <div class="card-incident">
+            <%= "#{key} | #{value}" %>
+        </div>
+      <% end %>
+
+      <%= pie_chart @incidents.group(:category).count %>
+    </div>
+  </div>
+</div>
