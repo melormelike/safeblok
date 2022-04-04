@@ -1,0 +1,57 @@
+// .form-label {
+//   display: none;
+// }
+
+.form-control {
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.form-select {
+  width: 100%;
+  border-radius: 10px;
+  margin: 0px !important;
+  background-color: white;
+}
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: #ECEAFF;
+  color: $primary;
+  border: 1px solid $primary;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + label {
+  background-color: $primary;
+  color: white;
+}
+
+.login-logo {
+  width: 30%;
+  margin: 15% 0px;
+}
+
+@media (min-width: 385px) {
+  .incident_date {
+    width: 60%;
+  }
+
+  .incident_time {
+    width: 38%;
+  }
+}
