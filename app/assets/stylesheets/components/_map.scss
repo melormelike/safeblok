@@ -48,4 +48,12 @@
   bottom: 0;
   width: 100%;
   height:100vh;
- }
+}
+
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
