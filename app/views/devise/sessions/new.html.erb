@@ -1,5 +1,7 @@
 <div class="container my-4">
-  <h2>Log in</h2>
+  <div class="text-center">
+    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", class:"login-logo" %>
+  </div>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -14,7 +16,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+      <%= f.button :submit, "Log in", class:"button-primary w-100" %>
     </div>
   <% end %>
 
