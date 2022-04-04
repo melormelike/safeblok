@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :edit, :create, :update]
 
   def index
     @incidents = Incident.all
@@ -17,20 +17,27 @@ class IncidentsController < ApplicationController
 
   def show
     @incident = Incident.find(params[:id])
+    authorize @incident
   end
 
   def new
     @incident = Incident.new
+    authorize @incident
   end
 
   def create
     @incident = Incident.new(incident_params)
     @incident.user = current_user
+    authorize @incident
     if @incident.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def update
+    @incident.update(incident_params)
   end
 
   private
