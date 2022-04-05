@@ -1,21 +1,13 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
 .navbar-safeblok {
   width: 100%;
   position: fixed;
   background-color: white;
   bottom: 0;
+  z-index: 10;
+
+  .my-container {
+    margin-top: 0;
+  }
 }
 
 .fas {
@@ -30,15 +22,16 @@
   img {
     width: 25px;
     height: 25px;
+    margin: 8px;
   }
 }
 
 .navbar-plus {
   border-radius: 50%;
   background: $blue;
-  width: 48px;
-  height: 48px;
-  margin-top: -12px;
+  width: 52px;
+  height: 52px;
+  margin-top: -18px;
   display: flex;
   align-items: center;
   justify-content: center;
