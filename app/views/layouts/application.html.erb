@@ -10,10 +10,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <%# Charts %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
   </head>
 
   <body>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%= render 'shared/navbar' %>
   </body>
 </html>

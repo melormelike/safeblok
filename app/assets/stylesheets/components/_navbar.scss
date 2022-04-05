@@ -10,3 +10,41 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-safeblok {
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+}
+
+.fas {
+  font-size: 24px;
+}
+
+.navbar-tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.navbar-plus {
+  border-radius: 50%;
+  background: $blue;
+  width: 48px;
+  height: 48px;
+  margin-top: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+
+  .fas {
+    color: white;
+  }
+}
