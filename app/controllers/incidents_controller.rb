@@ -37,7 +37,13 @@ class IncidentsController < ApplicationController
   end
 
   def update
+    @incident = Incident.find(params[:id])
     @incident.update(incident_params)
+  end
+
+  def edit
+    @incident = Incident.find(params[:id])
+    authorize @incident
   end
 
   private
