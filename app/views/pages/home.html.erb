@@ -4,8 +4,8 @@
   <div class="cards-incidents-global d-none">
     <% @incidents_per_location.each do |key, value| %>
       <div class="card-incident">
-        <p class="card-incident-location-key"><%= "#{key}"%></p>
-        <p class="card-incident-location-value"><%= "#{value}" %></p>
+        <p class="card-incident-location-key"><%= key%></p>
+        <p class="card-incident-location-value"><%= value %></p>
       </div>
     <% end %>
     <br>
@@ -13,8 +13,8 @@
       <p>Most common incidents:</p>
       <% @incidents_per_category.each do |key, value| %>
         <div class="card-incident", id="<%= key %>">
-            <p><%= "#{key}" %></p>
-            <p class="card-incident-category-value"><%= "#{value}" %></p>
+            <p><%= key %></p>
+            <p class="card-incident-category-value"><%= value %></p>
         </div>
       <% end %>
     </div>
@@ -23,8 +23,8 @@
       <p>Time of incidents:</p>
       <% @incidents_per_time.each do |key, value| %>
         <div class="card-incident", id="<%= key %>">
-          <p class="card-incident-time-key"><%= "#{key.strftime("%I:%M%p")}"%></p>
-          <p class="card-incident-time-value"><%= "#{value}" %></p>
+          <p class="card-incident-time-key"><%= key.strftime("%I:%m%p")%></p>
+          <p class="card-incident-time-value"><%= value %></p>
         </div>
       <% end %>
     </div>
@@ -32,9 +32,9 @@
     <div class="card-incidents">
       <p>Date of incidents:</p>
       <% @incidents_per_date.each do |key, value| %>
-        <div class="card-incident", id="<%=key%>">
-          <p class="card-incident-date-key"><%= "#{key.strftime("%Y-%m-%d")}"%></p>
-          <p class="card-incident-date-value"><%= "#{value}" %></p>
+        <div class="card-incident", id="<%= key %>">
+          <p class="card-incident-date-key"><%= key.strftime("%Y-%m-%d")%></p>
+          <p class="card-incident-date-value"><%= value %></p>
         </div>
       <% end %>
     </div>
@@ -107,6 +107,13 @@
         type: 'bar',
         data: data2,
         options: {
+          scales: {
+            y: {
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
         }
       };
     </script>
@@ -131,6 +138,7 @@
       let timeValue = arrTimeValue.map(grabInnerText)
 
       const labels3 = timeKey;
+      console.log(timeKey)
 
       const data3 = {
         labels: labels3,
@@ -146,6 +154,13 @@
         type: 'line',
         data: data3,
         options: {
+          scales: {
+            y: {
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
         }
       };
     </script>
@@ -186,6 +201,13 @@
         type: 'line',
         data: data4,
         options: {
+          scales: {
+            y: {
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
         }
       };
     </script>
@@ -196,6 +218,7 @@
         config4
       );
     </script>
+
     </div>
   </div>
 </div>
