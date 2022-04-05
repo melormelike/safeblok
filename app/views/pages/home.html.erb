@@ -1,7 +1,7 @@
 <div class="container ms-1", data-controller="charts">
   <h1>Statistics View</h1>
 
-  <div class="cards-incidents-global">
+  <div class="cards-incidents-global d-none">
     <% @incidents_per_location.each do |key, value| %>
       <div class="card-incident">
         <p class="card-incident-location-key"><%= "#{key}"%></p>
@@ -12,12 +12,33 @@
     <div class="card-incidents">
       <p>Most common incidents:</p>
       <% @incidents_per_category.each do |key, value| %>
-        <div class="card-incident", id="<%=key%>">
+        <div class="card-incident", id="<%= key %>">
             <p><%= "#{key}" %></p>
             <p class="card-incident-category-value"><%= "#{value}" %></p>
         </div>
       <% end %>
     </div>
+
+    <div class="card-incidents">
+      <p>Time of incidents:</p>
+      <% @incidents_per_time.each do |key, value| %>
+        <div class="card-incident", id="<%= key %>">
+          <p class="card-incident-time-key"><%= "#{key.strftime("%I:%M%p")}"%></p>
+          <p class="card-incident-time-value"><%= "#{value}" %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card-incidents">
+      <p>Date of incidents:</p>
+      <% @incidents_per_date.each do |key, value| %>
+        <div class="card-incident", id="<%=key%>">
+          <p class="card-incident-date-key"><%= "#{key.strftime("%Y-%m-%d")}"%></p>
+          <p class="card-incident-date-value"><%= "#{value}" %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
 <%# CHART - CATEGORIES %>
     <div>
@@ -60,10 +81,17 @@
     </div>
 
     <script>
-      const labels2 = [
-        document.querySelectorAll(".card-incident-location-key")[0].innerText,
-        document.querySelectorAll(".card-incident-location-key")[1].innerText,
-      ];
+
+      function grabInnerText(x) {
+        return x.innerText
+      }
+
+      let arrLocationKey =  Array.from(document.querySelectorAll(".card-incident-location-key"))
+      let locationKey = arrLocationKey.map(grabInnerText)
+      let arrLocationValue = Array.from(document.querySelectorAll(".card-incident-location-value"))
+      let locationValue = arrLocationValue.map(grabInnerText)
+
+      const labels2 = locationKey;
 
       const data2 = {
         labels: labels2,
@@ -71,9 +99,10 @@
           label: 'Incidents per location',
           backgroundColor: ['rgb(255, 99, 132)', 'blue'],
           borderColor: ['rgb(255, 99, 132)', 'blue'],
-          data: [document.querySelectorAll(".card-incident-location-value")[0].innerText, document.querySelectorAll(".card-incident-location-value")[1].innerText],
+          data: locationValue,
         }]
       };
+
       const config2 = {
         type: 'bar',
         data: data2,
@@ -89,8 +118,84 @@
       );
     </script>
 
+<%# CHART - TIME %>
+    <div>
+      <canvas id="timeChart"></canvas>
+    </div>
 
+    <script>
 
+      let arrTimeKey =  Array.from(document.querySelectorAll(".card-incident-time-key"))
+      let timeKey = arrTimeKey.map(grabInnerText)
+      let arrTimeValue = Array.from(document.querySelectorAll(".card-incident-time-value"))
+      let timeValue = arrTimeValue.map(grabInnerText)
+
+      const labels3 = timeKey;
+
+      const data3 = {
+        labels: labels3,
+        datasets: [{
+          label: 'Incidents per time',
+          backgroundColor: ['rgb(255, 99, 132)', 'blue'],
+          borderColor: ['rgb(255, 99, 132)', 'blue'],
+          data: timeValue,
+        }]
+      };
+
+      const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+        }
+      };
+    </script>
+
+    <script>
+      const timeChart = new Chart(
+        document.getElementById('timeChart'),
+        config3
+      );
+    </script>
+
+<%# CHART - DATE %>
+    <div>
+      <canvas id="dateChart"></canvas>
+    </div>
+
+    <script>
+
+      let arrDateKey =  Array.from(document.querySelectorAll(".card-incident-date-key"))
+      let dateKey = arrDateKey.map(grabInnerText)
+      let arrDateValue = Array.from(document.querySelectorAll(".card-incident-date-value"))
+      let dateValue = arrDateValue.map(grabInnerText)
+      console.log(dateValue)
+
+      const labels4 = dateKey;
+
+      const data4 = {
+        labels: labels4,
+        datasets: [{
+          label: 'Incidents per date',
+          backgroundColor: ['rgb(255, 99, 132)', 'blue'],
+          borderColor: ['rgb(255, 99, 132)', 'blue'],
+          data: dateValue,
+        }]
+      };
+
+      const config4 = {
+        type: 'line',
+        data: data4,
+        options: {
+        }
+      };
+    </script>
+
+    <script>
+      const dateChart = new Chart(
+        document.getElementById('dateChart'),
+        config4
+      );
+    </script>
     </div>
   </div>
 </div>
