@@ -58,8 +58,8 @@
  }
 
  .mapboxgl-ctrl-geocoder {
-  max-width: none;
-  width: 100%;
+  max-width: none !important;
+  width: 100% !important;
   border: 1px solid lightgrey;
   border-radius: 10px !important;
   box-shadow: none !important;

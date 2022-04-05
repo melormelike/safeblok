@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="my-container">
   <h1 class="text-center">Report a new incident</h1>
   <%= simple_form_for @incident do |f| %>
     <%= f.input :address,
@@ -16,7 +16,6 @@
             input_html: { class: "tag-selector" },
             item_wrapper_class: 'tag-item' %>
     <%= f.input :authorities, label: "Reported to Authorities", as: :boolean %>
-    <%#= f.input :status, as: :boolean %>
     <%= f.input :description, label: false, as: :text, label: false, :placeholder => "Describe the incident in a few lines" %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit class: "button-primary w-100" %>
