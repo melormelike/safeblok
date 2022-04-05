@@ -16,4 +16,9 @@
       <p>This incident has no photo<p>
     <% end %>
   </div>
+  <div>
+    <% if policy(incident).edit? %>
+      <%= link_to 'Update', edit_incident_path(incident) %>
+    <% end %>
+  </div>
 </div>
