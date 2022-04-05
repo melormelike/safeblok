@@ -48,16 +48,21 @@
   bottom: 0;
   width: 100%;
   height:100vh;
- }
+}
 
- .incident-photo {
-   height: 25vw;
-   width: 25vw;
-   display: inline-block;
-   margin: 10px
- }
+.infobox > a {
+  text-decoration: none;
+  color: #6b6a54;
+  font-size: 16px;
+}
+.incident-photo {
+  height: 25vw;
+  width: 25vw;
+  display: inline-block;
+  margin: 10px
+}
 
- .mapboxgl-ctrl-geocoder {
+.mapboxgl-ctrl-geocoder {
   max-width: none !important;
   width: 100% !important;
   border: 1px solid lightgrey;
