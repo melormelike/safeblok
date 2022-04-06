@@ -23,7 +23,7 @@
       <p>Time of incidents:</p>
       <% @incidents_per_time.each do |key, value| %>
         <div class="card-incident", id="<%= key %>">
-          <p class="card-incident-time-key"><%= key.strftime("%I:%m%p")%></p>
+          <p class="card-incident-time-key"><%= key.strftime("%H").to_i %></p>
           <p class="card-incident-time-value"><%= value %></p>
         </div>
       <% end %>
@@ -61,7 +61,7 @@
         }]
       };
       const config1 = {
-        type: 'pie',
+        type: 'doughnut',
         data: data1,
         options: {
         }
@@ -132,13 +132,18 @@
 
     <script>
 
+      function compare(a,b) {
+          return a-b
+        }
+
       let arrTimeKey =  Array.from(document.querySelectorAll(".card-incident-time-key"))
-      let timeKey = arrTimeKey.map(grabInnerText)
+      let timeKey = arrTimeKey.map(grabInnerText).map(x => parseInt(x)).sort(compare)
       let arrTimeValue = Array.from(document.querySelectorAll(".card-incident-time-value"))
       let timeValue = arrTimeValue.map(grabInnerText)
+      console.log(arrTimeKey.map(grabInnerText).map(x => parseInt(x)).sort())
+      console.log(timeValue)
 
       const labels3 = timeKey;
-      console.log(timeKey)
 
       const data3 = {
         labels: labels3,
@@ -156,6 +161,7 @@
         options: {
           scales: {
             y: {
+              beginAtZero: true,
               ticks: {
                 stepSize: 1
               }
@@ -203,6 +209,7 @@
         options: {
           scales: {
             y: {
+              beginAtZero: true,
               ticks: {
                 stepSize: 1
               }
@@ -221,4 +228,13 @@
 
     </div>
   </div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
