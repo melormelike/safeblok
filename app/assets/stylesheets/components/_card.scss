@@ -1,3 +1,5 @@
+
+//show.html
 .incident-card {
   box-sizing: border-box;
   max-width: 960px;
@@ -32,6 +34,25 @@
   width: 40vw;
   display: inline-block;
   margin: 10px
+}
+
+//info-window
+.incident-photo-small {
+  height: 25vw;
+  width: 25vw;
+  display: inline-block;
+  margin: 10px
+}
+.infobox > a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #0f1a36;
+}
+
+.line-small {
+  border: 5px solid $lightblue;
+  width: 50px;
+  margin: 15px auto;
 }
 
 @media (max-width: 540px) {
