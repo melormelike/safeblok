@@ -3,8 +3,24 @@
   max-width: 960px;
   margin: 20% ;
   align-items: center;
+  text-align: center;
 }
+.incident-time {
+  display: block;
+  border-bottom: 3px solid lightblue;
+}
+.show-header {
+  display: block;
+  margin: 5px;
+}
+.incident-header {
+  background: lightblue;
 
+}
+.handphone{
+  margin-bottom: 10px;
+
+}
 .incident-photo-big {
   height: 20vw;
   width: 20vw;
