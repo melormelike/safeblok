@@ -13,14 +13,21 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/gundogdumel/cl1k62p6j005916t2hkzd4n4y"
-
+      style: "mapbox://styles/gundogdumel/cl1k62p6j005916t2hkzd4n4y",
+      sources: {
+        cluster: true,
+        clusterMaxZoom: 14,
+        clusterRadius: 50
+      },
+      // layers:
     })
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
   }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup({ className: 'popups', anchor: "bottom"}).setHTML(marker.info_window)

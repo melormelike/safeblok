@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :edit, :create, :update]
+  # skip_before_action :authenticate_user!, only: [:index, :show, :edit, :create, :update]
 
   def index
     @incidents = policy_scope(Incident)

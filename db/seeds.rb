@@ -8,17 +8,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+puts "Destroying all data"
 Incident.destroy_all
 User.destroy_all
 
 # User seed to test geocode
-melike = User.create!(email: "melike@gmail.com", username: "Melike", password: "123456")
+puts "Creating users"
+melike = User.create!(email: "melike@gmail.com", username: "Melike", password: "123456", admin: true)
 christina = User.create!(email: "christina@gmail.com", username: "Christina", password: "123456")
 joana = User.create!(email: "joana@gmail.com", username: "Joana", password: "123456")
+puts "Created #{User.count} users"
 
 # Incident seed to test geocode
 
-
+puts "Creating incidents"
 incident_1 = Incident.create!(user: User.first, category: "Item Stolen", authorities: true, address: "Canggu, Bali", date: Date.today, description: "Someone stole my phone while I was riding my scooter. The phone was in the pocket of bike. It was dark so I didn't see how they look like.", time: "20:00")
 incident_2 = Incident.create!(user: User.last, category: "Item Stolen", authorities: true, address: "Ubud, Bali", date: Date.today, description: "While I was in the villa, two guys jumped into the garden and stole my laptop which was in the sunbed by the pool. ", time: "8:00")
 incident_3 = Incident.create!(user: User.last, category: "Item Stolen", authorities: true, address: "Ubud, Bali", date: Date.today, description: "in Ubud", time: "8:00")
@@ -34,3 +37,4 @@ file_3 = File.open(Rails.root.join("app/assets/images/yellowpin.jpg"))
 file_4 = File.open(Rails.root.join("app/assets/images/yellowpin.jpg"))
 incident_2.photos.attach(io: file_3, filename:'nes.png', content_type: 'image/png')
 incident_2.photos.attach(io: file_4, filename:'nes.png', content_type: 'image/png')
+puts "Created #{Incident.count} incidents"
