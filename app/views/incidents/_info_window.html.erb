@@ -1,7 +1,8 @@
 
 <div class="infobox">
+  <%= link_to incident_path(incident) do %>
   <div>
-    <p><i class="fas fa-bolt"></i> <%= incident.category %> in <%=incident.address %></p>
+    <p><%= image_tag "thunder.png" %> <%= incident.category %> in <%=incident.address %></p>
     <p><%= incident.date.strftime("%A, %d %B ") %>, <%= incident.time.strftime("%-l:%M %P") %></p>
   </div>
   <div>
@@ -16,6 +17,7 @@
       <p>This incident has no photo<p>
     <% end %>
   </div>
+  <% end %>
   <div>
     <% if policy(incident).edit? %>
       <%= link_to 'Update', edit_incident_path(incident) %>

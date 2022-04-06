@@ -1,0 +1,15 @@
+<div class="incident-card">
+  <p><%= image_tag "thunder.png" %> <%= @incident.category %></p>
+  <p><%=@incident.address %></p>
+  <p><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
+  <p><%= @incident.description %></p>
+  <div>
+    <%if @incident.photos.attached? %>
+    <% @incident.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class:'incident-photo-big'%>
+     <% end %>
+    <% else %>
+      <p>This incident has no photo<p>
+    <% end %>
+  </div>
+</div>
