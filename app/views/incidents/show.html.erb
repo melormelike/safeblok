@@ -1,5 +1,5 @@
 <div class="incident-card">
-  <p><i class="fas fa-bolt"></i> <%= @incident.category %></p>
+  <p><%= image_tag "thunder.png" %> <%= @incident.category %></p>
   <p><%=@incident.address %></p>
   <p><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
   <p><%= @incident.description %></p>

@@ -5,7 +5,7 @@
         <%= image_tag 'home.png' %>
       <% end %>
       <%= link_to incidents_path do %>
-        <%= image_tag 'location.png' %>
+        <%= image_tag 'map.png' %>
       <% end %>
       <div class="navbar-plus">
         <%= link_to new_incident_path do %>
@@ -13,7 +13,7 @@
         <% end %>
       </div>
       <%= link_to incidents_path do %>
-        <%= image_tag 'stats.png' %>
+        <%= image_tag 'chart.png' %>
       <% end %>
       <% if user_signed_in? %>
         <%= link_to edit_user_registration_path(current_user) do %>

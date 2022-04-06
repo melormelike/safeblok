@@ -10,7 +10,7 @@ class IncidentsController < ApplicationController
         lat: incident.latitude,
         lng: incident.longitude,
         info_window: render_to_string(partial: "info_window", locals: { incident: incident }),
-        image_url: helpers.asset_url("alert2.png")
+        image_url: helpers.asset_url("marker.png")
       }
     end
   end
