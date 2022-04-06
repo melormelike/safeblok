@@ -1,7 +1,7 @@
 .incident-card {
   box-sizing: border-box;
   max-width: 960px;
-  margin: 20% ;
+  margin: 15% ;
   align-items: center;
   text-align: center;
 }
@@ -15,15 +15,42 @@
 }
 .incident-header {
   background: lightblue;
-
+  margin-left: auto;
+  margin-right: auto;
 }
 .handphone{
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 
 }
+.incident-description {
+  display: block;
+}
 .incident-photo-big {
-  height: 20vw;
-  width: 20vw;
+  height: 40vw;
+  width: 40vw;
   display: inline-block;
   margin: 10px
+}
+
+@media (max-width: 540px) {
+  /* For a screen < 720px, this CSS will be read */
+  .incident-photo-big {
+    height: 30vw;
+    width: 30vw;
+    display: inline-block;
+    margin: 10px
+  }
+
+}
+@media (max-width: 390px) {
+  /* For a screen < 540px, this CSS will be read */
+
+  .incident-photo-big {
+    height: 25vw;
+    width: 25vw;
+    display: inline-block;
+    margin: 10px
+  }
 }

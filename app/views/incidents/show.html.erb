@@ -3,13 +3,12 @@
   <%= image_tag 'handsphone.png', class:"handphone" %> <h2 class="incident-header">Reported Incident: <h2>
   </div>
   <p class="incident-time"><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
-
-
   <p><%= image_tag "thunder.png" %> <%= @incident.category %></p>
   <p><%=@incident.address %></p>
-  <p><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
+  <p class="incident-description"><strong>Description:</strong></P>
   <p><%= @incident.description %></p>
   <div>
+    <p><strong>Photos:</strong></p>
     <%if @incident.photos.attached? %>
     <% @incident.photos.each do |photo| %>
       <%= cl_image_tag photo.key, class:'incident-photo-big'%>
