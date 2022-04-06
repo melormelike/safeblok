@@ -13,4 +13,10 @@
 
 // Mapbox
 @import "mapbox-gl/dist/mapbox-gl";
-// @import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+
+.my-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 18px;
+}
