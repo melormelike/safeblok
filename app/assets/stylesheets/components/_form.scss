@@ -4,13 +4,13 @@
 
 .form-control {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: white;
 }
 
 .form-select {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
   margin: 0px !important;
   background-color: white;
 }
@@ -28,7 +28,7 @@
   cursor: pointer;
   display: inline-block;
   border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
+  padding: 0.3rem 0.8rem;
   background-color: #fcfcfc;
   color: $primary;
   border: 1px solid $primary;
@@ -43,7 +43,10 @@
 
 .login-logo {
   height: 20vh;
+  width: 20vh;
+  object-fit: cover;
   margin: 5vw 0px;
+  border-radius: 50%;
 }
 
 @media (min-width: 385px) {
