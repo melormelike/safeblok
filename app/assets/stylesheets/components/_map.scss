@@ -35,11 +35,13 @@
   font-family: "Open Sans", sans-serif;
   display: block;
   overflow: scroll;
-  border-radius: 20px;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+  padding: 12px 0 !important;
   // background-color: #f1f1f1 !important;
 }
 .mapboxgl-popup {
-  top: 15% !important;
+  top: 11% !important;
   will-change: none !important;
 }
 .map {
