@@ -1,7 +1,11 @@
 <div class="incident-card">
-  <p><%= image_tag "thunder.png" %> <%= @incident.category %></p>
+  <div class="show-header">
+  <%= image_tag 'handsphone.png', class:"handphone" %> <h2 class="incident-header">Reported Incident: <h2>
+  </div>
+  <p class="incident-time"><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
+  <p><%= @incident.category %></p>
   <p><%=@incident.address %></p>
-  <p><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
+  <p class="incident-description"></P>
   <p><%= @incident.description %></p>
   <div>
     <%if @incident.photos.attached? %>
