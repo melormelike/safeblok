@@ -34,10 +34,11 @@ incident_10 = Incident.create!(user: User.last, category: "Attempt", authorities
 
 file_1 = File.open(Rails.root.join("app/assets/images/pin.jpg"))
 file_2 = File.open(Rails.root.join("app/assets/images/pin.jpg"))
-incident_1.photos.attach(io: file_1, filename:'nes.png', content_type: 'image/png')
-incident_1.photos.attach(io: file_2, filename:'nes.png', content_type: 'image/png')
+incident_1.photos.attach(io: file_1, filename: 'nes.png', content_type: 'image/png')
+incident_1.photos.attach(io: file_2, filename: 'nes.png', content_type: 'image/png')
 file_3 = File.open(Rails.root.join("app/assets/images/yellowpin.jpg"))
 file_4 = File.open(Rails.root.join("app/assets/images/yellowpin.jpg"))
 incident_2.photos.attach(io: file_3, filename:'nes.png', content_type: 'image/png')
 incident_2.photos.attach(io: file_4, filename:'nes.png', content_type: 'image/png')
 puts "Created #{Incident.count} incidents"
+
