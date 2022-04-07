@@ -37,22 +37,38 @@
 }
 
 //info-window
-.incident-photo-small {
-  height: 25vw;
-  width: 25vw;
-  display: inline-block;
-  margin: 10px
-}
+//.incident-photo-small {
+  //height: 25vw;
+  //width: 25vw;
+  //display: inline-block;
+  //margin: 10px
+//}
 .infobox > a {
   text-decoration: none;
   font-size: 16px;
   color: #0f1a36;
+  font-family: "Monsterat", "Open Sans";
 }
 
 .line-small {
   border: 5px solid $lightblue;
   width: 50px;
-  margin: 15px auto;
+  margin: 5px auto;
+}
+
+.title-infowindow {
+  display: inline-block;
+  padding: 2px;
+  align-items: center;
+}
+.infobox {
+  bottom: 0 !important;
+}
+
+.see-more {
+  font-weight: bold;
+  border-bottom: 3px solid $lightblue ;
+  padding-bottom: 3px;
 }
 
 @media (max-width: 540px) {

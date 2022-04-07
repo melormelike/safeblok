@@ -2,7 +2,7 @@
 <div class="infobox">
   <%= link_to incident_path(incident) do %>
   <div>
-    <%= image_tag "thunder.png" %><p><strong> <%= incident.category %> in <%=incident.address %></strong></p>
+    <p class='title-infowindow'><%= image_tag "thunder.png" %><strong> <%= incident.category %> in <%=incident.address %></strong></p>
     <div class="line-small"></div>
     <p><%= incident.date.strftime("%A, %d %B ") %>, <%= incident.time.strftime("%-l:%M %P") %></p>
   </div>
@@ -18,9 +18,7 @@
     <%# else %>
     <%# end %>
   <% end %>
-  <div>
     <%# if policy(incident).edit? %>
       <%#= link_to 'Update', edit_incident_path(incident) %>
     <%# end %>
-  </div>
 </div>
