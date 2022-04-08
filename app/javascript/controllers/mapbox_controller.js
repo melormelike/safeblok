@@ -17,6 +17,8 @@ export default class extends Controller {
     })
 
     this.#addClustersToMap()
+
+
     // this.#addMarkersToMap()
     this.#fitMapToMarkers()
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
@@ -98,11 +100,11 @@ export default class extends Controller {
             'circle-color': [
               'step',
               ['get', 'point_count'],
-              '#51bbd6',
+              '#F7CBA1',
               3,
-              '#f1f075',
+              '#F09D51',
               10,
-              '#f28cb1'
+              '#F06543'
             ],
             'circle-radius': [
               'step',
@@ -142,9 +144,9 @@ export default class extends Controller {
           //   "icon-size": 0.028,
           // },
           paint: {
-            'circle-color': '#000000',
+            'circle-color': '#002366',
             'circle-radius': 8,
-            'circle-stroke-width': 1,
+            'circle-stroke-width': 2,
             'circle-stroke-color': '#fff'
           }
         }
