@@ -1,5 +1,6 @@
 .mapboxgl-popup {
   width: 100%;
+  //height: 35%;
 }
 
 .popups {
@@ -9,11 +10,11 @@
   height: 25vh !important;
   transform: translateY(60vh) !important;
   max-width: 100% !important;
-  // transform: inherit !important;
+  transform: inherit !important;
   transition-timing-function: ease-in;
   /* Quick on the way out */
   transition: 5s;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 
@@ -31,13 +32,13 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
   display: block;
   overflow: scroll;
   border-top-left-radius: 12px !important;
   border-top-right-radius: 12px !important;
   padding: 8px 0px 24px 0px !important;
   // background-color: #f1f1f1 !important;
+  //margin-left: 58px;
 }
 .mapboxgl-popup {
   top: 11% !important;
@@ -59,6 +60,7 @@
   box-shadow: none !important;
 }
 
+
 @media (max-width: 540px) {
   /* For a screen < 720px, this CSS will be read */
   .map {
@@ -66,7 +68,6 @@
     margin-left: auto;
     margin-right: auto;
   }
-
 }
 @media (max-width: 375px) {
   /* For a screen < 540px, this CSS will be read */
