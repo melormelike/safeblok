@@ -1,20 +1,20 @@
 .mapboxgl-popup {
-
   width: 100%;
+  //height: 35%;
 }
 
 .popups {
-  position:absolute;
+  position: absolute;
   bottom: -50px;
-  height: 25%;
   width: 100%;
+  height: 25vh !important;
   transform: translateY(60vh) !important;
   max-width: 100% !important;
-  // transform: inherit !important;
+  transform: inherit !important;
   transition-timing-function: ease-in;
   /* Quick on the way out */
   transition: 5s;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 
@@ -32,14 +32,16 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
   display: block;
   overflow: scroll;
-  border-radius: 20px;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+  padding: 8px 0px 24px 0px !important;
   // background-color: #f1f1f1 !important;
+  //margin-left: 58px;
 }
 .mapboxgl-popup {
-  top: 15% !important;
+  top: 11% !important;
   will-change: none !important;
 }
 .map {
@@ -50,18 +52,6 @@
   height:100vh;
 }
 
-.infobox > a {
-  text-decoration: none;
-  color: #6b6a54;
-  font-size: 16px;
-}
-.incident-photo {
-  height: 25vw;
-  width: 25vw;
-  display: inline-block;
-  margin: 10px
-}
-
 .mapboxgl-ctrl-geocoder {
   max-width: none !important;
   width: 100% !important;
@@ -70,6 +60,7 @@
   box-shadow: none !important;
 }
 
+
 @media (max-width: 540px) {
   /* For a screen < 720px, this CSS will be read */
   .map {
@@ -77,7 +68,6 @@
     margin-left: auto;
     margin-right: auto;
   }
-
 }
 @media (max-width: 375px) {
   /* For a screen < 540px, this CSS will be read */
