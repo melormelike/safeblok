@@ -1,5 +1,5 @@
 <div class="my-container", data-controller="charts">
-  <h1>Statistics View</h1>
+  <h1>Incidents</h1>
 
   <div class="cards-incidents-global d-none">
     <% @incidents_per_location.each do |key, value| %>
@@ -41,241 +41,245 @@
 </div>
 
 <%# CHART - LOCATION %>
-  <div class="chart">
-    <canvas id="locationChart"></canvas>
-  </div>
+  <div class="charts">
 
-  <script>
+    <div class="chart">
+      <canvas id="locationChart"></canvas>
+    </div>
 
-    function grabInnerText(x) {
-      return x.innerText
-    }
+    <script>
 
-    let arrLocationKey =  Array.from(document.querySelectorAll(".card-incident-location-key"))
-    let locationKey = arrLocationKey.map(grabInnerText)
-    let arrLocationValue = Array.from(document.querySelectorAll(".card-incident-location-value"))
-    let locationValue = arrLocationValue.map(grabInnerText)
+      function grabInnerText(x) {
+        return x.innerText
+      }
 
-    const labels2 = locationKey;
+      let arrLocationKey =  Array.from(document.querySelectorAll(".card-incident-location-key"))
+      let locationKey = arrLocationKey.map(grabInnerText)
+      let arrLocationValue = Array.from(document.querySelectorAll(".card-incident-location-value"))
+      let locationValue = arrLocationValue.map(grabInnerText)
 
-    const data2 = {
-      labels: labels2,
-      datasets: [{
-        label: 'Incidents per location',
-        backgroundColor: ['#F06543', '#F09D51', '#F7CBA1'],
-        borderColor: ['rgb(255, 99, 132)', 'blue'],
-        data: locationValue,
-      }]
-    };
+      const labels2 = locationKey;
 
-    const config2 = {
-      type: 'bar',
-      data: data2,
-      options: {
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              color: '#fafafa'
+      const data2 = {
+        labels: labels2,
+        datasets: [{
+          label: 'Incidents per location',
+          backgroundColor: ['#F06543', '#F09D51', '#F7CBA1'],
+          borderColor: ['rgb(255, 99, 132)', 'blue'],
+          data: locationValue,
+        }]
+      };
+
+      const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+          indexAxis: 'y',
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                color: '#0023660a'
+              },
+              ticks: {
+                stepSize: 1
+              }
             },
-            ticks: {
-              stepSize: 1
+            x: {
+              grid: {
+                drawBorder: false,
+                color: '#0023660a'
+              }
             }
           },
-          x: {
-            grid: {
-              drawBorder: false,
-              color: '#fafafa'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: 'Incidents per location',
-            color: '#002366',
-            font: {
-              family: 'Montserrat',
-              size: 16,
-              style: 'bold',
-              lineHeight: 1.2
+          plugins: {
+            legend: {
+              display: false
             },
-            padding: {top: 0, left: 0, right: 0, bottom: 25}
+            title: {
+              display: true,
+              text: 'Incidents per location',
+              color: '#002366',
+              font: {
+                family: 'Montserrat',
+                size: 16,
+                style: 'bold',
+                lineHeight: 1.2
+              },
+              padding: {top: 0, left: 0, right: 0, bottom: 25}
+            }
           }
         }
-      }
-    };
-  </script>
+      };
+    </script>
 
-  <script>
-    const locationChart = new Chart(
-      document.getElementById('locationChart'),
-      config2
-    );
-  </script>
+    <script>
+      const locationChart = new Chart(
+        document.getElementById('locationChart'),
+        config2
+      );
+    </script>
 
-<%# CHART - TIME %>
-  <div class="chart">
-    <canvas id="timeChart"></canvas>
-  </div>
+  <%# CHART - TIME %>
+    <div class="chart">
+      <canvas id="timeChart"></canvas>
+    </div>
 
-  <script>
+    <script>
 
-    function compare(a,b) {
-        return a[0]-b[0]
-      }
+      function compare(a,b) {
+          return a[0]-b[0]
+        }
 
-    let arrTimeKey =  Array.from(document.querySelectorAll(".card-incident-time-key"))
-    let timeKey = arrTimeKey.map(grabInnerText).map(x => parseInt(x) + ":00")
-    let arrTimeValue = Array.from(document.querySelectorAll(".card-incident-time-value"))
-    let timeValue = arrTimeValue.map(grabInnerText)
+      let arrTimeKey =  Array.from(document.querySelectorAll(".card-incident-time-key"))
+      let timeKey = arrTimeKey.map(grabInnerText).map(x => parseInt(x) + ":00")
+      let arrTimeValue = Array.from(document.querySelectorAll(".card-incident-time-value"))
+      let timeValue = arrTimeValue.map(grabInnerText)
 
-    let result = timeKey.map(function(value, index) {
-      return [timeKey[index], timeValue[index] ]
-    })
+      let result = timeKey.map(function(value, index) {
+        return [timeKey[index], timeValue[index] ]
+      })
 
-    timeKey = result.map(array => array[0])
-    timeValue = result.map(array => array[1])
+      timeKey = result.map(array => array[0])
+      timeValue = result.map(array => array[1])
 
-    const labels3 = timeKey;
+      const labels3 = timeKey;
 
-    const data3 = {
-      labels: labels3,
-      datasets: [{
-        label: 'Incidents per time',
-        backgroundColor: ['#758ECD'],
-        borderColor: ['#758ECD'],
-        data: timeValue,
-      }]
-    };
+      const data3 = {
+        labels: labels3,
+        datasets: [{
+          label: 'Incidents per time',
+          backgroundColor: ['#758ECD'],
+          borderColor: ['#758ECD'],
+          data: timeValue,
+        }]
+      };
 
-    const config3 = {
-      type: 'line',
-      data: data3,
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              stepSize: 1
+      const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1
+              },
+              grid: {
+                drawBorder: false,
+                color: '#0023660a'
+              }
             },
-            grid: {
-              drawBorder: false,
-              color: '#dddddd'
+            x: {
+              grid: {
+                drawBorder: false,
+                color: '#0023660a'
+              }
             }
           },
-          x: {
-            grid: {
-              drawBorder: false,
-              color: '#fafafa'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: 'Incidents per time',
-            color: '#002366',
-            font: {
-              family: 'Montserrat',
-              size: 16,
-              style: 'bold',
-              lineHeight: 1.2
+          plugins: {
+            legend: {
+              display: false
             },
-            padding: {top: 0, left: 0, right: 0, bottom: 25}
+            title: {
+              display: true,
+              text: 'Incidents per time',
+              color: '#002366',
+              font: {
+                family: 'Montserrat',
+                size: 16,
+                style: 'bold',
+                lineHeight: 1.2
+              },
+              padding: {top: 0, left: 0, right: 0, bottom: 25}
+            }
           }
         }
-      }
-    };
-  </script>
+      };
+    </script>
 
-  <script>
-    const timeChart = new Chart(
-      document.getElementById('timeChart'),
-      config3
-    );
-  </script>
+    <script>
+      const timeChart = new Chart(
+        document.getElementById('timeChart'),
+        config3
+      );
+    </script>
 
-<%# CHART - DATE %>
-  <div class="chart">
-    <canvas id="dateChart"></canvas>
-  </div>
+  <%# CHART - DATE %>
+    <div class="chart">
+      <canvas id="dateChart"></canvas>
+    </div>
 
-  <script>
+    <script>
 
-    let arrDateKey =  Array.from(document.querySelectorAll(".card-incident-date-key"))
-    let dateKey = arrDateKey.map(grabInnerText).map(x => x.split("-")[1] + "/" + x.split("-")[2])
-    let arrDateValue = Array.from(document.querySelectorAll(".card-incident-date-value"))
-    let dateValue = arrDateValue.map(grabInnerText)
+      let arrDateKey =  Array.from(document.querySelectorAll(".card-incident-date-key"))
+      let dateKey = arrDateKey.map(grabInnerText).map(x => x.split("-")[1] + "/" + x.split("-")[2])
+      let arrDateValue = Array.from(document.querySelectorAll(".card-incident-date-value"))
+      let dateValue = arrDateValue.map(grabInnerText)
 
-    const labels4 = dateKey;
+      const labels4 = dateKey;
 
-    const data4 = {
-      labels: labels4,
-      datasets: [{
-        label: 'Incidents',
-        backgroundColor: ['#32A287'],
-        borderColor: ['#32A287'],
-        data: dateValue,
-      }]
-    };
+      const data4 = {
+        labels: labels4,
+        datasets: [{
+          label: 'Incidents',
+          backgroundColor: ['#32A287'],
+          borderColor: ['#32A287'],
+          data: dateValue,
+        }]
+      };
 
-    const config4 = {
-      type: 'line',
-      data: data4,
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              stepSize: 1
+      const config4 = {
+        type: 'line',
+        data: data4,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1
+              },
+              grid: {
+                drawBorder: false,
+                color: '#0023660a'
+              }
             },
-            grid: {
-              drawBorder: false,
-              color: '#dddddd'
+            x: {
+              grid: {
+                drawBorder: false,
+                color: '#0023660a'
+              }
             }
           },
-          x: {
-            grid: {
-              drawBorder: false,
-              color: '#fafafa'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: 'Incidents per location',
-            color: '#002366',
-            font: {
-              family: 'Montserrat',
-              size: 16,
-              style: 'bold',
-              lineHeight: 1.2
+          plugins: {
+            legend: {
+              display: false
             },
-            padding: {top: 0, left: 0, right: 0, bottom: 25}
-          }
-        },
-      }
-    };
-  </script>
+            title: {
+              display: true,
+              text: 'Incidents per location',
+              color: '#002366',
+              font: {
+                family: 'Montserrat',
+                size: 16,
+                style: 'bold',
+                lineHeight: 1.2
+              },
+              padding: {top: 0, left: 0, right: 0, bottom: 25}
+            }
+          },
+        }
+      };
+    </script>
 
-  <script>
-    const dateChart = new Chart(
-      document.getElementById('dateChart'),
-      config4
-    );
-  </script>
+    <script>
+      const dateChart = new Chart(
+        document.getElementById('dateChart'),
+        config4
+      );
+    </script>
 
+    </div>
   </div>
 </div>
 
