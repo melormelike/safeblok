@@ -1,8 +1,9 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 100%;
   height: 34px;
+  float: right;
 }
 
 .switch input {
@@ -35,12 +36,13 @@
 }
 
 input:checked+.slider {
-  background-color: #E21C90;
+  background-color: $lightblue;
 }
 
 input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
-  background-color: #E21C90;
+  box-shadow: 0 0 1px #c8e2f7;
+  background-color: $lightblue;
+
 }
 
 input:checked+.slider:before {
