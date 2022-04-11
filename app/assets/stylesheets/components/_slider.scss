@@ -1,9 +1,11 @@
+
 .switch {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 40%;
   height: 34px;
-  float: right;
+  //float:right;
+
 }
 
 .switch input {
@@ -56,6 +58,8 @@ input:checked+.slider:before {
 
 .slider.round {
   border-radius: 34px;
+  position: absolute;
+  top: 0;
 }
 
 .slider.round:before {
