@@ -1,10 +1,7 @@
+<% incidents_same_area = markers.select{ |marker| marker.longitude == incident.longitude && marker.latitude == incident.latitude} %>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <% incidents_same_area = markers.select{ |marker| marker.longitude == incident.longitude && marker.latitude == incident.latitude} %>
+  <p><%= pluralize( incidents_same_area.count, "incident" ) %> reported here</p>
+  <hr>
   <div class="carousel-inner">
     <%# Loop %>
     <% incidents_same_area.each_with_index do |incident, index| %>
@@ -12,7 +9,6 @@
       <div class="infobox my-container">
         <%= link_to incident_path(incident) do %>
           <div>
-            <p><%= pluralize( incidents_same_area.count, "incident" ) %> reported here</p>
             <%= image_tag "thunder.png" %><p><strong> <%= incident.category %> in <%=incident.address %></strong></p>
             <div class="line-small"></div>
             <p><%= incident.date.strftime("%A, %d %B ") %>, <%= incident.time.strftime("%-l:%M %P") %></p>
@@ -27,12 +23,18 @@
     <% end %>
     <%# Loop Ends %>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <% if incidents_same_area.count > 1 %>
+  <div class="carousel-action">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <%= image_tag "left-arrow.png", class:"icon-small carousel-control-prev-icon", aria_hidden:"true" %>
+      <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span> %>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <%= image_tag "right-arrow.png", class:"icon-small carousel-control-next-icon", aria_hidden:"true" %>
+      <%# <span class="carousel-control-next-icon" aria-hidden="true"></span> %>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <% end %>
 </div>
