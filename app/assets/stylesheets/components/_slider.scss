@@ -1,10 +1,15 @@
 
 .switch {
-  position: relative;
+  position: absolute;
   display: inline-block;
-  width: 40%;
+  width: 70px;
   height: 34px;
   // float: right;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 12px;
 
 }
 
@@ -19,7 +24,7 @@
   cursor: pointer;
   top: 0;
   left: 0;
-  right: 0;
+  right: 10px;
   bottom: 0;
   background-color: #ccc;
   -webkit-transition: .4s;
@@ -39,6 +44,7 @@
 
 input:checked+.slider {
   background-color: $lightblue;
+
 }
 
 input:focus+.slider {
