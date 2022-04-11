@@ -7,7 +7,7 @@
   position: absolute;
   bottom: -50px;
   width: 100%;
-  height: 25vh !important;
+  height: 30vh !important;
   transform: translateY(60vh) !important;
   max-width: 100% !important;
   transform: inherit !important;
@@ -16,7 +16,6 @@
   transition: 5s;
   overflow: hidden !important;
 }
-
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
@@ -40,10 +39,12 @@
   // background-color: #f1f1f1 !important;
   //margin-left: 58px;
 }
+
 .mapboxgl-popup {
-  top: 11% !important;
+  top: 66% !important;
   will-change: none !important;
 }
+
 .map {
   position: absolute;
   top: 0;

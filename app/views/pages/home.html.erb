@@ -1,7 +1,7 @@
 <div class="my-container", data-controller="charts">
   <h1>Incidents</h1>
 
-  <div class="cards-incidents-global d-none">
+  <div class="cards-incidents-global">
     <% @incidents_per_location.each do |key, value| %>
       <div class="card-incident">
         <p class="card-incident-location-key"><%= key%></p>
@@ -143,12 +143,15 @@
       timeKey = result.map(array => array[0])
       timeValue = result.map(array => array[1])
 
+      console.log(timeKey)
+      console.log(timeValue)
+
       const labels3 = timeKey;
 
       const data3 = {
         labels: labels3,
         datasets: [{
-          label: 'Incidents per time',
+          label: 'Incidents per time of the day',
           backgroundColor: ['#758ECD'],
           borderColor: ['#758ECD'],
           data: timeValue,
@@ -257,7 +260,7 @@
             },
             title: {
               display: true,
-              text: 'Incidents per location',
+              text: 'Incidents per date',
               color: '#002366',
               font: {
                 family: 'Montserrat',
