@@ -17,12 +17,18 @@ export default class extends Controller {
     })
 
     this.#addClustersToMap()
-
-
     // this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl }))
+
+    this.map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      bbox: [114.316311,-8.900893,115.736602,-7.998758], // Boundary for Bali
+      proximity: {
+        longitude: 115.028229,
+        latitude: -8.451997
+      }
+    }))
   }
 
   #addMarkersToMap() {
