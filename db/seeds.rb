@@ -21,7 +21,7 @@ puts "Created #{User.count} users"
 
 # Incident seed to test geocode
 
-incident_1 = Incident.create!(user: User.first, category: "Item Stolen", authorities: true, address: "Canggu, Bali", date: Date.today - 1.day, description: "Someone stole my phone while I was riding my scooter. The phone was in the pocket of bike. It was dark so I didn't see how they look like.", time: "20:00")
+incident_1 = Incident.create!(user: User.first, category: "Item Stolen", authorities: true, address: "Canggu, Bali", date: Date.parse('23 October 2022'), description: "Someone stole my phone while I was riding my scooter. The phone was in the pocket of bike. It was dark so I didn't see how they look like.", time: "20:00")
 incident_2 = Incident.create!(user: User.last, category: "Item Stolen", authorities: true, address: "Ubud, Bali", date: Date.today - 1.day, description: "While I was in the villa, two guys jumped into the garden and stole my laptop which was in the sunbed by the pool. ", time: "8:00")
 incident_3 = Incident.create!(user: User.last, category: "Item Stolen", authorities: true, address: "Ubud, Bali", date: Date.today - 2.day, description: "in umalas", time: "8:00")
 incident_4 = Incident.create!(user: User.last, category: "Attempt", authorities: true, address: "Ubud, Bali", date: Date.today - 3.day, description: "in umalas", time: "8:00")
