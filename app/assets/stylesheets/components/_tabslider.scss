@@ -1,0 +1,81 @@
+//@import "compass/css3";
+
+$background: #fafafa;
+$switchbg: $lightblue;
+$white: #252222;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+@mixin clearfix {
+	zoom: 1;
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+
+body {
+  background-color: $background;
+  text-align: center;
+}
+
+h4 {
+  color: $black;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.switch {
+  background-color: $switchbg;
+  width: 200px;
+  display: inline-block;
+  border-radius: 30px;
+  height: 40px;
+  padding: 2px;
+  position: relative;
+  @include clearfix;
+  label {
+    float: left;
+    width: 50%;
+    position: relative;
+    z-index: 2;
+    line-height: 40px;
+    cursor: pointer;
+    // color: lighten($black, 30%);
+    color: $black;
+    border-radius: 30px;
+  }
+  input[type="radio"]{
+    display: none;
+    &:checked + label {
+      color: $black;
+      font-weight: bold;
+    }
+  }
+  span {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    display: block;
+    border-radius:30px;
+    background-color: #FFF;
+    transition: all 200ms ease;
+    &.right {
+      left: 50%;
+      border-radius: 10px;
+      transition: all 200ms ease;
+    }
+  }
+
+}
+.layer-test {
+  z-index: 10;
+  top: 12px;
+}
