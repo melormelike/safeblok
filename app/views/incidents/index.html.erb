@@ -1,5 +1,309 @@
-<div style="width: 100%; height: 100vh;" class="map"
+
+<label class="switch">
+  <input type="checkbox" id="index-toggle" checked>
+  <span class="slider round"></span>
+</label>
+
+
+
+
+<div style="width: 100%; height: 100vh;" class="map" id="main_content"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<div id="secondary_content">Slider 2
+
+<div class="my-container", data-controller="charts">
+  <h1>Statistics View</h1>
+
+  <div class="cards-incidents-global d-none">
+    <% @incidents_per_location.each do |key, value| %>
+      <div class="card-incident">
+        <p class="card-incident-location-key"><%= key%></p>
+        <p class="card-incident-location-value"><%= value %></p>
+      </div>
+    <% end %>
+    <br>
+    <div class="card-incidents">
+      <p>Most common incidents:</p>
+      <% @incidents_per_category.each do |key, value| %>
+        <div class="card-incident", id="<%= key %>">
+            <p><%= key %></p>
+            <p class="card-incident-category-value"><%= value %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card-incidents">
+      <p>Time of incidents:</p>
+      <% @incidents_per_time.each do |key, value| %>
+        <div class="card-incident", id="<%= key %>">
+          <p class="card-incident-time-key"><%= key.strftime("%H").to_i %></p>
+          <p class="card-incident-time-value"><%= value %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card-incidents">
+      <p>Date of incidents:</p>
+      <% @incidents_per_date.each do |key, value| %>
+        <div class="card-incident", id="<%= key %>">
+          <p class="card-incident-date-key"><%= key.strftime("%Y-%m-%d")%></p>
+          <p class="card-incident-date-value"><%= value %></p>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<%# CHART - LOCATION %>
+  <div class="chart">
+    <canvas id="locationChart"></canvas>
+  </div>
+
+  <script>
+
+    function grabInnerText(x) {
+      return x.innerText
+    }
+
+    let arrLocationKey =  Array.from(document.querySelectorAll(".card-incident-location-key"))
+    let locationKey = arrLocationKey.map(grabInnerText)
+    let arrLocationValue = Array.from(document.querySelectorAll(".card-incident-location-value"))
+    let locationValue = arrLocationValue.map(grabInnerText)
+
+    const labels2 = locationKey;
+
+    const data2 = {
+      labels: labels2,
+      datasets: [{
+        label: 'Incidents per location',
+        backgroundColor: ['#F06543', '#F09D51', '#F7CBA1'],
+        borderColor: ['rgb(255, 99, 132)', 'blue'],
+        data: locationValue,
+      }]
+    };
+
+    const config2 = {
+      type: 'bar',
+      data: data2,
+      options: {
+        scales: {
+          y: {
+            grid: {
+              drawBorder: false,
+              color: '#fafafa'
+            },
+            ticks: {
+              stepSize: 1
+            }
+          },
+          x: {
+            grid: {
+              drawBorder: false,
+              color: '#fafafa'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Incidents per location',
+            color: '#002366',
+            font: {
+              family: 'Montserrat',
+              size: 16,
+              style: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 0, left: 0, right: 0, bottom: 25}
+          }
+        }
+      }
+    };
+  </script>
+
+  <script>
+    const locationChart = new Chart(
+      document.getElementById('locationChart'),
+      config2
+    );
+  </script>
+
+<%# CHART - TIME %>
+  <div class="chart">
+    <canvas id="timeChart"></canvas>
+  </div>
+
+  <script>
+
+    function compare(a,b) {
+        return a[0]-b[0]
+      }
+
+    let arrTimeKey =  Array.from(document.querySelectorAll(".card-incident-time-key"))
+    let timeKey = arrTimeKey.map(grabInnerText).map(x => parseInt(x) + ":00")
+    let arrTimeValue = Array.from(document.querySelectorAll(".card-incident-time-value"))
+    let timeValue = arrTimeValue.map(grabInnerText)
+
+    let result = timeKey.map(function(value, index) {
+      return [timeKey[index], timeValue[index] ]
+    })
+
+    timeKey = result.map(array => array[0])
+    timeValue = result.map(array => array[1])
+
+    const labels3 = timeKey;
+
+    const data3 = {
+      labels: labels3,
+      datasets: [{
+        label: 'Incidents per time',
+        backgroundColor: ['#758ECD'],
+        borderColor: ['#758ECD'],
+        data: timeValue,
+      }]
+    };
+
+    const config3 = {
+      type: 'line',
+      data: data3,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            },
+            grid: {
+              drawBorder: false,
+              color: '#dddddd'
+            }
+          },
+          x: {
+            grid: {
+              drawBorder: false,
+              color: '#fafafa'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Incidents per time',
+            color: '#002366',
+            font: {
+              family: 'Montserrat',
+              size: 16,
+              style: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 0, left: 0, right: 0, bottom: 25}
+          }
+        }
+      }
+    };
+  </script>
+
+  <script>
+    const timeChart = new Chart(
+      document.getElementById('timeChart'),
+      config3
+    );
+  </script>
+
+<%# CHART - DATE %>
+  <div class="chart">
+    <canvas id="dateChart"></canvas>
+  </div>
+
+  <script>
+
+    let arrDateKey =  Array.from(document.querySelectorAll(".card-incident-date-key"))
+    let dateKey = arrDateKey.map(grabInnerText).map(x => x.split("-")[1] + "/" + x.split("-")[2])
+    let arrDateValue = Array.from(document.querySelectorAll(".card-incident-date-value"))
+    let dateValue = arrDateValue.map(grabInnerText)
+
+    const labels4 = dateKey;
+
+    const data4 = {
+      labels: labels4,
+      datasets: [{
+        label: 'Incidents',
+        backgroundColor: ['#32A287'],
+        borderColor: ['#32A287'],
+        data: dateValue,
+      }]
+    };
+
+    const config4 = {
+      type: 'line',
+      data: data4,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            },
+            grid: {
+              drawBorder: false,
+              color: '#dddddd'
+            }
+          },
+          x: {
+            grid: {
+              drawBorder: false,
+              color: '#fafafa'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Incidents per location',
+            color: '#002366',
+            font: {
+              family: 'Montserrat',
+              size: 16,
+              style: 'bold',
+              lineHeight: 1.2
+            },
+            padding: {top: 0, left: 0, right: 0, bottom: 25}
+          }
+        },
+      }
+    };
+  </script>
+
+  <script>
+    const dateChart = new Chart(
+      document.getElementById('dateChart'),
+      config4
+    );
+  </script>
+
+  </div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+
 </div>
