@@ -2,7 +2,7 @@
 <div class="my-container", data-controller="charts">
   <h1>Incidents</h1>
 
-  <div class="cards-incidents-global">
+  <div class="cards-incidents-global d-none">
     <% @incidents_per_location.each do |key, value| %>
       <div class="card-incident">
         <p class="card-incident-location-key"><%= key%></p>
@@ -81,15 +81,15 @@
               grid: {
                 drawBorder: false,
                 color: '#0023660a'
-              },
-              ticks: {
-                stepSize: 1
               }
             },
             x: {
               grid: {
                 drawBorder: false,
                 color: '#0023660a'
+              },
+              ticks: {
+                stepSize: 1
               }
             }
           },
@@ -128,23 +128,20 @@
     <script>
 
       function compare(a,b) {
-          return a-b
+          return a[0]-b[0]
         }
 
       let arrTimeKey =  Array.from(document.querySelectorAll(".card-incident-time-key"))
-      let timeKey = arrTimeKey.map(grabInnerText).map(x => parseInt(x)).sort(compare)
+      let timeKey = arrTimeKey.map(grabInnerText).map(x => parseInt(x))
       let arrTimeValue = Array.from(document.querySelectorAll(".card-incident-time-value"))
       let timeValue = arrTimeValue.map(grabInnerText)
 
       let result = timeKey.map(function(value, index) {
         return [timeKey[index], timeValue[index]]
-      })
+      }).sort(compare)
 
       timeKey = result.map(array => array[0])
       timeValue = result.map(array => array[1])
-
-      console.log(timeKey)
-      console.log(timeValue)
 
       const labels3 = timeKey;
 
@@ -218,6 +215,13 @@
       let dateKey = arrDateKey.map(grabInnerText).map(x => x.split("-")[1] + "/" + x.split("-")[2])
       let arrDateValue = Array.from(document.querySelectorAll(".card-incident-date-value"))
       let dateValue = arrDateValue.map(grabInnerText)
+
+      let resultDate = dateKey.map(function(value, index) {
+        return [dateKey[index], dateValue[index]]
+      }).sort()
+
+      dateKey = resultDate.map(array => array[0])
+      dateValue = resultDate.map(array => array[1])
 
       const labels4 = dateKey;
 
