@@ -16,15 +16,17 @@ export default class extends Controller {
         longitude: 115.028229,
         latitude: -8.451997
       }
+
       //defaultValue: "address"
     });
     //console.log(this.element)
     //this.element.innerHTML = this.addressTarget.value
     this.geocoder.addTo(this.element)
-    this.geocoder.on("result", event => this.#setInputValue(event))
 
+    this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
   }
+
   #setInputValue(event) {
     this.addressTarget.value = event.result["place_name"]
   }
