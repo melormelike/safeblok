@@ -73,16 +73,17 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .mapboxgl-ctrl-geocoder mapboxgl-ctrl {
+  .mapboxgl-control-container .mapboxgl-ctrl-geocoder mapboxgl-ctrl {
     background-color: none !important;
     margin : 0px 0px !important;
   }
 
-  .mapboxgl-ctrl-geocoder {
+  .mapboxgl-control-container .mapboxgl-ctrl-geocoder {
     border: none !important;
     opacity: 0 ;
   }
-  }
+}
+
 @media (max-width: 375px) {
   /* For a screen < 375px, this CSS will be read */
 
@@ -92,12 +93,12 @@
     margin-right: auto;
   }
 
-  .mapboxgl-ctrl-geocoder mapboxgl-ctrl {
+  .mapboxgl-control-container .mapboxgl-ctrl-geocoder mapboxgl-ctrl {
     background-color: none !important;
     margin : 0px 0px !important;
   }
 
-  .mapboxgl-ctrl-geocoder {
+  .mapboxgl-control-container .mapboxgl-ctrl-geocoder {
     border: none !important;
     opacity: 0 ;
   }
