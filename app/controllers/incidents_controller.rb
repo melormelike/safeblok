@@ -14,7 +14,7 @@ class IncidentsController < ApplicationController
       {
         lat: incident.latitude,
         lng: incident.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { incident: incident }),
+        info_window: render_to_string(partial: "info_window", locals: { incident: incident, markers: @incidents }),
         image_url: helpers.asset_url("marker.png")
       }
     end
@@ -35,7 +35,7 @@ class IncidentsController < ApplicationController
     @incident.user = current_user
     authorize @incident
     if @incident.save
-      redirect_to root_path
+      redirect_to incident_path(@incident)
     else
       render :new
     end
