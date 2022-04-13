@@ -1,0 +1,13 @@
+<div class="my-container">
+  <div class="text-center">
+    <%= image_tag "safeblok.png", class:"login-logo" %>
+    <h1>Welcome to Safeblok</h1>
+    <p>Safeblok is a community-based app to help making your journey in Bali safer.</p>
+    <p>After many incidents - robberies, attempts - were reported in Bali, we created this app so we can safely move around Bali.</p>
+    <p>Report an incident that happened to you or check the safest areas.</p>
+  </div>
+
+  <%= link_to "Report an incident", new_incident_path  %>
+  <%= link_to "See incidents", incidents_path %>
+  <%#= link_to "Edit incidents", edit_incident_path(@incident) %>
+</div>
