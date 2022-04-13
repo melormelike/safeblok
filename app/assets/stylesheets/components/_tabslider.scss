@@ -17,12 +17,6 @@ $white: #252222;
 	}
 }
 
-
-body {
-  background-color: $background;
-  text-align: center;
-}
-
 h4 {
   color: $black;
   margin-bottom: 20px;
@@ -30,6 +24,7 @@ h4 {
 }
 
 .switch {
+  text-align: center;
   background-color: $switchbg;
   width: 200px;
   display: inline-block;
@@ -64,12 +59,12 @@ h4 {
     width: 50%;
     height: 100%;
     display: block;
-    border-radius:30px;
+    border-radius: 30px;
     background-color: #FFF;
     transition: all 200ms ease;
     &.right {
       left: 50%;
-      border-radius: 10px;
+      border-radius: 30px;
       transition: all 200ms ease;
     }
   }
