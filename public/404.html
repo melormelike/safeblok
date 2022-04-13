@@ -11,13 +11,15 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #fafafa;
-  color: #0f1a36;
+  background-color: #002366;
+  color: white
+
 }
 
 html {
   background-size: cover;
-  background-position: bottom
+  background-position: bottom;
+  font-family: "Montserrat", "Open Sans";
 }
 
 .error {
@@ -32,11 +34,9 @@ html {
 h1 {
   margin: -10px 0 -30px;
   font-size: calc(12vw + 40px);
-  opacity: .8;
 }
 
 p {
-  opacity: .8;
   font-size: 20px;
   margin: 8px 0 38px 0;
   font-weight: bold
@@ -44,9 +44,13 @@ p {
 a {
   text-decoration: none;
   font-size: 20px;
-  color:  #0f1a36;
+  color:  white;
 }
 
+.logo{
+  border: 1px solid white;
+  border-radius: 50%;
+}
   </style>
 </head>
 
@@ -57,9 +61,8 @@ a {
     <div class="error">
       <h1>404</h1><br><br>
       <p>We're sorry but it looks like that page doesn't exist anymore.</p>
-      <h2><a href="/">Home</a></h2>
-
-      <img src="safeblok.png" height= 200px, width= 200px, alt="Safeblok Logo" class="logo"/>
+      <h2><a href="/"> Home</a></h2>
+      <img src="safeblok.png"  width= "30%", height="30%", class="logo" alt="Safeblok Logo"/>
     </div>
 </body>
 </html>
