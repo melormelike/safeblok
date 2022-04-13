@@ -134,27 +134,31 @@ export default class extends Controller {
           layout: {
             'text-field': '{point_count_abbreviated}',
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12
+            'text-size': 14
           }
         }
       );
 
+      this.map.loadImage("https://cdn-icons.flaticon.com/png/512/5695/premium/5695691.png?token=exp=1649755573~hmac=b5d9493cb4685e78aa8ec82837210b71", (err, img) => {
+        this.map.addImage("custom-marker", img)
+      })
+
       this.map.addLayer(
         {
           id: 'unclustered-point',
-          type: "circle", //'symbol',
+          type: "symbol", //'symbol',
           source: 'incidents',
           filter: ['!', ['has', 'point_count']],
-          // layout: {
-          //   "icon-image": "markerimage",
-          //   "icon-size": 0.028,
-          // },
-          paint: {
-            'circle-color': '#002366',
-            'circle-radius': 8,
-            'circle-stroke-width': 2,
-            'circle-stroke-color': '#fff'
-          }
+          layout: {
+            "icon-image": "custom-marker",
+            "icon-size": 0.075,
+          },
+          // paint: {
+          //   'circle-color': '#002366',
+          //   'circle-radius': 8,
+          //   'circle-stroke-width': 2,
+          //   'circle-stroke-color': '#fff'
+          // }
         }
       );
 
