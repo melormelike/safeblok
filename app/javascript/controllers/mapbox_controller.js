@@ -139,7 +139,7 @@ export default class extends Controller {
         }
       );
 
-      this.map.loadImage("https://cdn-icons.flaticon.com/png/512/5695/premium/5695691.png?token=exp=1649755573~hmac=b5d9493cb4685e78aa8ec82837210b71", (err, img) => {
+      this.map.loadImage("https://cdn-icons-png.flaticon.com/512/6725/6725430.png", (err, img) => {
         this.map.addImage("custom-marker", img)
       })
 
