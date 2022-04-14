@@ -4,7 +4,7 @@
       <%= link_to root_path do %>
         <%= image_tag 'home.png' %>
       <% end %>
-      <%= link_to incidents_path, data: {
+      <%= link_to incidents_path, id:"map-tab", data: {
         action: "click->toggle#switchTab"
       } do %>
         <%= image_tag 'location.png' %>
@@ -14,7 +14,7 @@
           <%= image_tag 'plus.png' %>
         <% end %>
       </div>
-      <%= link_to incidents_path, data: {
+      <%= link_to incidents_path, id:"stats-tab", data: {
         action: "click->toggle#switchTab"
       } do %>
         <%= image_tag 'stats.png' %>
