@@ -5,11 +5,13 @@
   <div class="carousel-inner">
     <%# Loop %>
     <% incidents_same_area.each_with_index do |incident, index| %>
+    <% url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{incident.longitude},#{incident.latitude}.json?access_token=#{apiKey}"%>
+    <% neighborhood = JSON.parse(URI.open(url).read) %>
     <div class="carousel-item <%= "active" if index == 0 %>">
       <div class="infobox my-container">
         <%= link_to incident_path(incident) do %>
           <div>
-            <%= image_tag "thunder.png" %><p><strong> <%= incident.category %> in <%=incident.address %></strong></p>
+            <%= image_tag "thunder.png" %><p><strong> <%= incident.category %> in <%=neighborhood["features"][1]["text"] %></strong></p>
             <div class="line-small"></div>
             <p><%= incident.date.strftime("%A, %d %B ") %>, <%= incident.time.strftime("%-l:%M %P") %></p>
           </div>
