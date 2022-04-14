@@ -1,7 +1,6 @@
 import { Controller } from "stimulus";
 export default class extends Controller {
   connect() {
-    console.log("hey yo");
     let mainContent = document.querySelector("#main_content");
     let secondaryContent = document.querySelector("#secondary_content");
     let slider = document.querySelector(".switch span");
