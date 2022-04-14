@@ -6,14 +6,18 @@ export default class extends Controller {
     let slider = document.querySelector(".switch span");
 
     document.querySelector("#optionone").addEventListener("click", (e) => {
-      mainContent.style.display = e.target.checked ? "block" : "none";
-      secondaryContent.style.display = e.target.checked ? "none" : "block";
+      // mainContent.style.display = e.target.checked ? 'block' : 'none';
+      // secondaryContent.style.display = e.target.checked ? 'none' : 'block';
+      mainContent.classList.remove("d-none");
+      secondaryContent.classList.add("d-none");
       slider.classList.remove("right");
     });
 
     document.querySelector("#optiontwo").addEventListener("click", (e) => {
-      mainContent.style.display = e.target.checked ? "none" : "block";
-      secondaryContent.style.display = e.target.checked ? "block" : "none";
+      // mainContent.style.display = e.target.checked ? 'none' : 'block';
+      // secondaryContent.style.display = e.target.checked ? 'block' : 'none';
+      mainContent.classList.add("d-none");
+      secondaryContent.classList.remove("d-none");
       slider.classList.add("right");
     });
   }
