@@ -3,10 +3,9 @@ export default class extends Controller {
   static targets = ["span"];
 
   connect() {
-    console.log("Hello from toggle.js")
   }
 
-  switchTab() {
-    console.log("click")
+  switchTab(event) {
+    console.log(event)
   }
 }
