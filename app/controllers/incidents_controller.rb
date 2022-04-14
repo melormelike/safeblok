@@ -1,3 +1,7 @@
+require "json"
+require "open-uri"
+
+
 class IncidentsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:index, :show, :edit, :create, :update]
 
@@ -9,9 +13,10 @@ class IncidentsController < ApplicationController
 
     @incidents_per_location = Hash.new(0)
 
-    @incidents.each do |location|
-      url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{location.longitude},#{location.latitude}.json?access_token=#{apiKey}"
+    @incidents.each do |incident|
+      url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{incident.longitude},#{incident.latitude}.json?access_token=#{apiKey}"
       neighborhood = JSON.parse(URI.open(url).read)
+      #incident.neighborhood = neighborhood
       @incidents_per_location[neighborhood["features"][1]["text"]] += 1
     end
 
@@ -25,7 +30,7 @@ class IncidentsController < ApplicationController
       {
         lat: incident.latitude,
         lng: incident.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { incident: incident, markers: @incidents }),
+        info_window: render_to_string(partial: "info_window", locals: { incident: incident, markers: @incidents, apiKey: apiKey }),
         image_url: helpers.asset_url("marker.png")
       }
     end
