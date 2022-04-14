@@ -4,6 +4,7 @@
   background-color: $primary;
   color: white;
   transition: all .2s ease-in-out;
+  text-decoration: none;
 
   &:hover {
     color: $primary;
@@ -18,6 +19,7 @@
   color: $primary;
   border: 1px solid $primary;
   transition: all .2s ease-in-out;
+  text-decoration: none;
 
   &:hover {
     background-color: $primary;
