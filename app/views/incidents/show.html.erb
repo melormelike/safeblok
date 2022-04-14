@@ -1,3 +1,9 @@
+
+<!-- # META TAGS -->
+<% content_for :meta_title, "#{@incident.category} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @incident.address %>
+<!-- # META TAGS END -->
+
 <div class="incident-card">
   <div class="show-header">
   <%= image_tag 'handsphone.png', class:"handphone" %> <h2 class="incident-header">Reported Incident: <h2>
