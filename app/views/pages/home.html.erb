@@ -16,16 +16,17 @@
   <%= link_to "Report an incident", new_incident_path, class: "button-ghost btn w-100 mt-4"%>
   <%# <%%= link_to "Edit incidents", edit_incident_path(@incident), class: "button-ghost w-100" %>
 
-  <% if current_user.incidents %>
-    <h3 class="mt-6">Incidents you reported</h3>
-
-    <% @my_incidents.each do |incident| %>
-      <div class="my-incident-card mb-3">
-        <%= incident.category %> -
-        <%= incident.date.strftime("%d %B ") %>
-        <%= link_to 'Edit', edit_incident_path(incident)%>
-      </div>
+  <div class="my-incident-container mt-5">
+    <% if current_user != nil && !(current_user.incidents.empty?) %>
+      <h3 class="mt-6 mb-3">Incidents you reported</h3>
+      <% @my_incidents.each do |incident| %>
+        <div class="my-incident-card mb-3">
+          Incident from
+          <%= incident.date.strftime("%d %B ") %>
+          <%= link_to 'Edit', edit_incident_path(incident)%>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
 </div>

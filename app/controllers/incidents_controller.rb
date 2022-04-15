@@ -16,7 +16,7 @@ class IncidentsController < ApplicationController
     @incidents.each do |incident|
       url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{incident.longitude},#{incident.latitude}.json?access_token=#{apiKey}"
       neighborhood = JSON.parse(URI.open(url).read)
-      #incident.neighborhood = neighborhood
+      # incident.neighborhood = neighborhood
       @incidents_per_location[neighborhood["features"][1]["text"]] += 1
     end
 
