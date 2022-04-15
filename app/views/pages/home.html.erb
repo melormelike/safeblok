@@ -2,12 +2,31 @@
   <div class="text-center">
     <%= image_tag "safeblok.png", class:"login-logo" %>
     <h1>Welcome to Safeblok</h1>
-    <p>Safeblok is a community-based app to help making your journey in Bali safer.</p>
-    <p>After many incidents - robberies, attempts - were reported in Bali, we created this app so we can safely move around Bali.</p>
-    <p>Report an incident that happened to you or check the safest areas.</p>
+      <div class="paragraph">
+        <p>Safeblok is a community-based app to help making your journey in Bali safer.</p>
+        <%# <p>After many incidents - robberies, attempts - were reported in Bali, we created this app so we can safely move around Bali.</p> %>
+        <p>Report an incident that happened to you or check the safest areas.</p>
+      </div>
+
+    <%# <%= link_to "Report an incident", new_incident_path, class: "button-ghost w-100"%>
   </div>
 
-  <%= link_to "Report an incident", new_incident_path  %>
-  <%= link_to "See incidents", incidents_path %>
-  <%#= link_to "Edit incidents", edit_incident_path(@incident) %>
+
+  <%= link_to 'See incidents', incidents_path, class: "button-primary btn w-100" %>
+  <%= link_to "Report an incident", new_incident_path, class: "button-ghost btn w-100 mt-4"%>
+  <%# <%%= link_to "Edit incidents", edit_incident_path(@incident), class: "button-ghost w-100" %>
+
+  <div class="my-incident-container mt-5">
+    <% if current_user != nil && !(current_user.incidents.empty?) %>
+      <h3 class="mt-6 mb-3">Incidents you reported</h3>
+      <% @my_incidents.each do |incident| %>
+        <div class="my-incident-card mb-3">
+          Incident from
+          <%= incident.date.strftime("%d %B ") %>
+          <%= link_to 'Edit', edit_incident_path(incident)%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>

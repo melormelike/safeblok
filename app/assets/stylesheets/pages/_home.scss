@@ -1,14 +1,35 @@
 // Specific CSS for your home-page
 
-.categoryCharts {
-  width: 50% !important;
+// .categoryCharts {
+//   width: 50% !important;
+// }
+
+// .chart {
+//   padding: 15px;
+//   padding-top: 20px;
+//   box-shadow: 1px 2px 2px #cacdda;
+//   margin-top: 39px;
+//   border-radius: 8px;
+//   background-color: #0023660a;
+// }
+
+.paragraph {
+  padding: 10px 20px;
 }
 
-.chart {
-  padding: 15px;
-  padding-top: 20px;
-  box-shadow: 1px 2px 2px #cacdda;
-  margin-top: 39px;
-  border-radius: 8px;
-  background-color: #0023660a;
+.my-incident-container {
+  margin-top: 30px;
+  // background-color: #758ecd6b;
+  // border-radius: 10px;
+
+
+  h3 {
+    color: #758ECD;
+    font-size: 22px;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
