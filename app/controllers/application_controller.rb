@@ -1,3 +1,6 @@
+require "json"
+require "open-uri"
+
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
@@ -19,5 +22,9 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 end
