@@ -9,18 +9,18 @@ class IncidentsController < ApplicationController
     @incidents = policy_scope(Incident)
 
     # stats
-    apiKey = ENV['MAPBOX_API_KEY']
+    # apiKey = ENV['MAPBOX_API_KEY']
 
-    @incidents_per_location = Hash.new(0)
+    # @incidents_per_location = Hash.new(0)
 
-    @incidents.each do |incident|
-      url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{incident.longitude},#{incident.latitude}.json?access_token=#{apiKey}"
-      neighborhood = JSON.parse(URI.open(url).read)
-      # incident.neighborhood = neighborhood
-      @incidents_per_location[neighborhood["features"][1]["text"]] += 1
-    end
+    # @incidents.each do |incident|
+    #   url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{incident.longitude},#{incident.latitude}.json?access_token=#{apiKey}"
+    #   neighborhood = JSON.parse(URI.open(url).read)
+    #   # incident.neighborhood = neighborhood
+    #   @incidents_per_location[neighborhood["features"][1]["text"]] += 1
+    # end
 
-    @incidents_per_location = @incidents_per_location.sort_by { |_key, value| value }.reverse.first(3).to_h
+    @incidents_per_location = Incident.group(:neighborhood).count.sort_by { |_key, value| value }.reverse.first(3).to_h
     @incidents_per_category = Incident.group(:category).count.sort_by { |_key, value| value }.reverse.first(5).to_h
     @incidents_per_time = Incident.group(:time).count.sort_by { |_key, value| value }
     @incidents_per_date = Incident.group(:date).count
@@ -30,7 +30,7 @@ class IncidentsController < ApplicationController
       {
         lat: incident.latitude,
         lng: incident.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { incident: incident, markers: @incidents, apiKey: apiKey }),
+        info_window: render_to_string(partial: "info_window", locals: { incident: incident, markers: @incidents }),
         image_url: helpers.asset_url("marker.png")
       }
     end
