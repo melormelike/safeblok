@@ -49,6 +49,7 @@ class IncidentsController < ApplicationController
   def create
     @incident = Incident.new(incident_params)
     @incident.user = current_user
+
     authorize @incident
     if @incident.save
       redirect_to incident_path(@incident)
