@@ -32,8 +32,8 @@ export default class extends Controller {
     );
     let locationValue = arrLocationValue.map(grabInnerText);
 
-    console.log(arrLocationKey);
-    console.log(locationValue);
+    // console.log(arrLocationKey);
+    // console.log(locationValue);
 
     const labels2 = locationKey;
 

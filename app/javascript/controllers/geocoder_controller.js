@@ -10,7 +10,7 @@ export default class extends Controller {
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       // types: "country,region,place,postcode,locality,neighborhood,address,district,poi",
-      types: "country,region,place,postcode,locality,neighborhood",
+      types: "country,region,place,postcode,locality,neighborhood,district,poi",
       placeholder: this.addressTarget.value,
       bbox: [114.316311, -8.900893, 115.736602, -7.998758], // Boundary for Bali
       proximity: {
