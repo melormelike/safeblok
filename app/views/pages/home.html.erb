@@ -21,8 +21,8 @@
       <h3 class="mt-6 mb-3">Incidents you reported</h3>
       <% @my_incidents.each do |incident| %>
         <div class="my-incident-card mb-3">
-          Incident from
-          <%= incident.date.strftime("%d %B ") %>
+          Incident |
+          <%= incident.date.strftime("%d %B ") %> | <%= incident.neighborhood %>
           <%= link_to 'Edit', edit_incident_path(incident)%>
         </div>
       <% end %>
