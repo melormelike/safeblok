@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_04_17_083745) do
     t.float "longitude"
     t.string "category"
     t.text "description"
-    t.boolean "authorities", default: false
+    t.boolean "authorities"
     t.date "date"
     t.time "time"
     t.bigint "user_id", null: false
