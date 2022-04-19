@@ -1,5 +1,5 @@
 meta_product_name: "Safeblok"
 meta_title: "Safeblok - A community-based app to help making your journey in Bali safer"
 meta_description: "Safeblok is a platform for foreigners living in Bali, who need to be informed about the community safety and want to see it displayed on a clear map."
-meta_image: "safeblok.png" # should exist in `app/assets/images/`
+meta_image: "image.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
