@@ -69,6 +69,10 @@ export default class extends Controller {
             ticks: {
               stepSize: 1,
             },
+            title: {
+              display: true,
+              text: "Number of incidents",
+            },
           },
         },
         plugins: {
@@ -107,7 +111,7 @@ export default class extends Controller {
     let arrTimeKey = Array.from(
       document.querySelectorAll(".card-incident-time-key")
     );
-    let timeKey = arrTimeKey.map(grabInnerText).map((x) => parseInt(x));
+    let timeKey = arrTimeKey.map(grabInnerText).map((hour) => parseInt(hour));
     let arrTimeValue = Array.from(
       document.querySelectorAll(".card-incident-time-value")
     );
@@ -119,7 +123,7 @@ export default class extends Controller {
       })
       .sort(compare);
 
-    timeKey = result.map((array) => array[0]);
+    timeKey = result.map((array) => array[0]).map((hour) => hour + ":00");
     timeValue = result.map((array) => array[1]);
 
     const labels3 = timeKey;
@@ -149,6 +153,10 @@ export default class extends Controller {
             grid: {
               drawBorder: false,
               color: "#0023660a",
+            },
+            title: {
+              display: true,
+              text: "Number of incidents",
             },
           },
           x: {
@@ -232,6 +240,10 @@ export default class extends Controller {
             grid: {
               drawBorder: false,
               color: "#0023660a",
+            },
+            title: {
+              display: true,
+              text: "Number of incidents",
             },
           },
           x: {
