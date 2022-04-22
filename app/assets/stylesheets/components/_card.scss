@@ -8,14 +8,16 @@
 }
 .incident-time {
   display: block;
-  border-bottom: 3px solid lightblue;
+  //border-bottom: 3px solid lightblue;
+  font-weight: bolder;
 }
 .show-header {
   display: block;
-  margin: 5px;
+  margin:5px;
+  margin-bottom: 30px;
 }
 .incident-header {
-  background: lightblue;
+  background: $lightblue;
   margin-left: auto;
   margin-right: auto;
 }
@@ -28,6 +30,18 @@
 .incident-description {
   display: block;
 }
+.map-png {
+  width: 25px;
+  height: 25px;
+  color:#0f1a36;
+
+}
+.address-line {
+  display: inline-block;
+  font-weight: bold;
+  // border: 1px solid $lightblue
+}
+
 .incident-photo-big {
   height: 40vw;
   width: 40vw;
