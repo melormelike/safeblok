@@ -1,22 +1,24 @@
-<div class="list">
-  <ul>
-    <li>Date</li>
-    <li>Time</li>
-    <li>Neighborhood</li>
-    <li>Category</li>
-    <li>Description</li>
-  </ul>
-<%#= link_to incident_path(incident) do %>
-  <ul >
-  <% @incidents.each do |incident| %>
-    <li data-label="date"> <%= incident.date.strftime("%A, %d %B ") %></li>
-    <li data-label="time"><%= incident.time.strftime("%-l:%M %P") %></li>
-    <li data-label="neighborhood"><%= incident.neighborhood %></li>
-    <li data-label="category"><%= incident.category %></li>
-    <li data-label="description">
-      <p> <%= incident.description %></p>
-    </li>
-    <% end %>
-  </ul>
+
+<div>
+  <%= form_tag incidents_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Date, Neighborhood"%>
+    <%= submit_tag "Sort by", class: "btn btn-sort-home" %>
+  <% end %>
 </div>
+
+
+<%#= link_to incident_path(incident) do %>
+<% @incidents.each do |incident| %>
+  <div class="incidentlist-card">
+    <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+    <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+    <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+    <p><strong>Category:</strong> <%= incident.category %></p>
+    <p><strong>Description:</strong> <%= incident.description %></p>
+  </div>
+<% end %>
+
 <%# end %>
