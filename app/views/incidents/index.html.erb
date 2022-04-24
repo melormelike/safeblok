@@ -6,7 +6,7 @@
       <label for="optionone"><i class="fas fa-map"></i></label>
 
       <input name="radio" type="radio" value="optiontwo" id="optiontwo">
-      <label for="optiontwo" class="right"><i class="fas fa-signal"></i></label>
+      <label for="optiontwo" class="right"><i class="fas fa-list-ul"></i></label>
 
       <span aria-hidden="true" id="toggle-slider" class="<%= "right" if params[:tab] == 'stats'%>"></span>
     </div>
@@ -21,6 +21,7 @@
 
   <%# View #2 - STATS %>
   <div class="my-container <%= "d-none" if params[:tab] == 'map'%>" id="secondary_content", data-controller="charts">
-    <%= render 'shared/stats' %>
+    <%#= render 'shared/stats' %>
+    <%= render 'shared/list'%>
   </div>
 </div>

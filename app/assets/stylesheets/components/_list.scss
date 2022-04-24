@@ -1,0 +1,38 @@
+.incidentlist-card {
+  padding: 6px;
+  background-color: $white;
+  border-radius: 8px;
+  border-color: 1px solid $lightblue;
+  // width: 365px;
+  height: 30%;
+  display: block;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+
+
+.btn-sort-home {
+  color: white;
+  padding: 4px 24px;
+  border-radius: 4px;
+  text-align: center;
+  align-items: center;
+  background: $lightblue;
+  transition: background 0.3s ease;
+  border: none;
+  height: 34px;
+}
+
+.btn-sort-home:hover{
+  color: white;
+  padding: 4px 24px;
+  text-align: center;
+  align-items: center;
+  background: $blue;
+  border: none;
+}
