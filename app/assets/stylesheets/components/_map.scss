@@ -65,6 +65,16 @@
   box-shadow: none !important;
 }
 
+.mapboxgl-control-container .mapboxgl-ctrl-geocoder mapboxgl-ctrl {
+  background-color: none !important;
+  margin : 0px 0px !important;
+}
+
+.mapboxgl-control-container .mapboxgl-ctrl-geocoder {
+  border: none !important;
+  opacity: 0 ;
+}
+
 
 @media (max-width: 545px) {
   /* For a screen < 545px, this CSS will be read */
