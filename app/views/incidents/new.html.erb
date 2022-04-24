@@ -1,8 +1,10 @@
 <div class="my-container">
   <h1 class="text-center mb-3">Report a new incident</h1>
   <%= simple_form_for @incident do |f| %>
+    <label for="neighborhood">Enter the neighborhood (Canggu, Kuta, Denpasar, Ubud,...):</label>
     <%= f.input :address,
               label: false,
+              id: "neighborhood",
               input_html: { data: { geocoder_target: "address" }, class: "d-none" },
               wrapper_html: { data: { controller: "geocoder",
               geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
@@ -18,7 +20,7 @@
             input_html: { class: "tag-selector" },
             item_wrapper_class: 'tag-item' %>
     <%= f.input :authorities, label: "Reported to Authorities", as: :boolean %>
-    <%= f.input :description, label: false, as: :text, label: false, :placeholder => "Describe the incident in a few lines" %>
+    <%= f.input :description, label: false, as: :text, label: false, :placeholder => "Describe the incident and give the most precise location" %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit class: "button-primary w-100" %>
   <% end %>

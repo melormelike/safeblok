@@ -50,8 +50,12 @@
   </head>
 
   <body>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/navbar' %>
+    <div class="phone">
+      <div class="phone__screen">
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+        <%= render 'shared/navbar' %>
+      </div>
+    </div>
   </body>
 </html>

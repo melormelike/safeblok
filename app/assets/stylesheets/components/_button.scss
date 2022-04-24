@@ -26,3 +26,30 @@
     color: white;
   }
 }
+
+.btn-back {
+  float: left;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: -80px
+}
+.btn-back > a {
+  text-decoration: none;
+}
+.backarrow {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media (max-width: 560px) {
+  /* For a screen < 540px, this CSS will be read */
+
+  .btn-back {
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: -40px;
+    float: left;
+  }
+}

@@ -3,14 +3,17 @@
 <% content_for :meta_title, "#{@incident.category} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @incident.address %>
 <!-- # META TAGS END -->
-
+<div class="btn-back">
+  <%= image_tag "left-arrow.png", class:"backarrow" %><%= link_to "Back", incidents_path(:tab => "map")  %>
+</div>
 <div class="incident-card">
   <div class="show-header">
   <%= image_tag 'handsphone.png', class:"handphone" %> <h2 class="incident-header">Reported Incident: <h2>
   </div>
   <p class="incident-time"><%= @incident.date.strftime("%A, %d %B ") %>, <%= @incident.time.strftime("%-l:%M %P") %></p>
-  <p><%= @incident.category %></p>
-  <p><%=@incident.address %></p>
+  <p class="address-line"><%= image_tag 'pointer.png', class:"map-png" %> <%=@incident.address %></p>
+  <p><strong><%= @incident.category %></strong></p>
+  <div class="line-small"></div>
   <p class="incident-description"></P>
   <p><%= @incident.description %></p>
   <div>
