@@ -13,9 +13,10 @@
       <%= f.input :time, as: :time, label: false, html5: true %>
     </div>
     <%= f.input :category,
-            label: false,
             collection: Incident::CATEGORIES,
-            as: :radio_buttons,
+            label: false,
+            prompt: "Select Category" %>
+            <%# as: :radio_buttons,
             input_html: { class: "tag-selector" },
             item_wrapper_class: 'tag-item' %>
     <%= f.input :authorities, label: "Reported to Authorities", as: :boolean %>

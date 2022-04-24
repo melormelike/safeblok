@@ -149,11 +149,16 @@ export default class extends Controller {
           "icon-image": "custom-marker",
           "icon-size": 0.075,
         },
-        // paint: {
-        //   'circle-color': '#002366',
-        //   'circle-radius': 8,
-        //   'circle-stroke-width': 2,
-        //   'circle-stroke-color': '#fff'
+        // 'paint': {
+        //   'icon-opacity': [
+        //     'interpolate',
+        //     ['linear'],
+        //     ['date'],
+        //     0,
+        //     0.3,
+        //     6,
+        //     1
+        //   ]
         // }
       });
 
