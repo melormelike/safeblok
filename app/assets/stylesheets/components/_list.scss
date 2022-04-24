@@ -1,14 +1,21 @@
+/* generic */
+
+body {
+  background-color:#eee;
+  color:#444;
+  font-family:sans-serif;
+}
 
 .list ul:nth-child(odd) {
-  background-color:$lightblue;
+  background-color:#ddd;
 }
 
 .list ul:nth-child(even) {
-  background-color:$white;
+  background-color:#fff;
 }
 
 /* big */
-// @media screen and (min-width:600px) {
+@media screen and (min-width:600px) {
 
   .list {
     display:table;
@@ -20,7 +27,7 @@
   }
 
   .list ul:first-child li {
-    background-color: $blue;
+    background-color:#444;
     color:#fff;
   }
 
@@ -29,61 +36,62 @@
     padding:.5em 1em;
   }
 
+}
 
 /* small */
-// @media screen and (max-width:599px) {
+@media screen and (max-width:599px) {
 
-//   .list ul {
-//     border:solid 1px #ccc;
-//     display:block;
-//     list-style:none;
-//     margin:1em;
-//     padding:.5em 1em;
-//   }
+  .list ul {
+    border:solid 1px #ccc;
+    display:block;
+    list-style:none;
+    margin:1em;
+    padding:.5em 1em;
+  }
 
-//   .list ul:first-child {
-//     display:none;
-//   }
+  .list ul:first-child {
+    display:none;
+  }
 
-//   .list ul > li {
-//     display:block;
-//     padding:.25em 0;
-//   }
+  .list ul > li {
+    display:block;
+    padding:.25em 0;
+  }
 
-//   .list ul:nth-child(odd) > li + li {
-//     border-top:solid 1px #ccc;
-//   }
+  .list ul:nth-child(odd) > li + li {
+    border-top:solid 1px #ccc;
+  }
 
-//   .list ul:nth-child(even) > li + li {
-//     border-top:solid 1px #eee;
-//   }
+  .list ul:nth-child(even) > li + li {
+    border-top:solid 1px #eee;
+  }
 
-//   .list ul > li:before {
-//     color:#000;
-//     content:attr(data-label);
-//     display:inline-block;
-//     font-size:75%;
-//     font-weight:bold;
-//     text-transform:capitalize;
-//     vertical-align:top;
-//     width:50%;
-//   }
+  .list ul > li:before {
+    color:#000;
+    content:attr(data-label);
+    display:inline-block;
+    font-size:75%;
+    font-weight:bold;
+    text-transform:capitalize;
+    vertical-align:top;
+    width:50%;
+  }
 
-//   .list p {
-//     margin:-1em 0 0 50%;
-//   }
+  .list p {
+    margin:-1em 0 0 50%;
+  }
 
-// }
+}
 
-// /* tiny */
-// @media screen and (max-width:349px) {
+/* tiny */
+@media screen and (max-width:349px) {
 
-//   .list ul > li:before {
-//     display:block;
-//   }
+  .list ul > li:before {
+    display:block;
+  }
 
-//   .list p {
-//     margin:0;
-//   }
+  .list p {
+    margin:0;
+  }
 
-// }
+}

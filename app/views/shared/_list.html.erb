@@ -7,7 +7,7 @@
     <li>Description</li>
   </ul>
 <%#= link_to incident_path(incident) do %>
-<ul>
+  <ul >
   <% @incidents.each do |incident| %>
     <li data-label="date"> <%= incident.date.strftime("%A, %d %B ") %></li>
     <li data-label="time"><%= incident.time.strftime("%-l:%M %P") %></li>
@@ -18,5 +18,5 @@
     </li>
     <% end %>
   </ul>
-
+</div>
 <%# end %>
