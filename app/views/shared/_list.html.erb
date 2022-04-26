@@ -1,26 +1,45 @@
-
+<script>
+function changeFilter(filter) {
+  console.log("FILTER:", filter)
+  // var element = document.getElementById("url");
+  // element.value = language;
+  // element.innerHTML = language;
+}
+ 
+</script>
 <div class="dropdown-new">
-<label for="cars">Choose a car:</label>
-
-<select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> ̰
+  <label for="filter">Choose a filter:</label>
+  <select name="filter" id="filter" onchange="changeFilter(this.value)">
+    <option value="neighborhood">Neighborhood</option>
+    <option value="date">Date</option>
+  </select> ̰
 </div>
 
 
 
 <%#= link_to incident_path(incident) do %>
-<% @incidents.each do |incident| %>
-  <div class="incidentlist-card">
-    <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
-    <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
-    <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
-    <p><strong>Category:</strong> <%= incident.category %></p>
-    <p><strong>Description:</strong> <%= incident.description %></p>
-  </div>
-<% end %>
-
+<%# if params[:query].present? && params[:query] == "date" %>
+<%#= link_to incident_path(incident) do %>
+<div class="date-filter">
+  <% @incidents_group.each do |incident| %>
+    <div class="incidentlist-card">
+      <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+      <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+      <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+      <p><strong>Category:</strong> <%= incident.category %></p>
+    </div>
+  <% end %>
+</div>
+<%# end %>
+<%# elsif params[:query].present? && params[:query] == "neighborhood" %>
+<div class="area-filter">
+  <%@incidents_group_area.each do |incident|%>
+    <div class="incidentlist-card">
+      <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+      <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+      <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+      <p><strong>Category:</strong> <%= incident.category %></p>
+    </div>
+  <% end %>
+</div>
 <%# end %>
