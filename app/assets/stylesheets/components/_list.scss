@@ -1,38 +1,31 @@
+
 .incidentlist-card {
   padding: 6px;
-  background-color: $white;
+  background-color: $lightblue;
   border-radius: 8px;
-  border-color: 1px solid $lightblue;
+  border: 1px solid $white;
   // width: 365px;
   height: 30%;
   display: block;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
 
 }
 
-
-
-.btn-sort-home {
-  color: white;
-  padding: 4px 24px;
-  border-radius: 4px;
-  text-align: center;
-  align-items: center;
-  background: $lightblue;
-  transition: background 0.3s ease;
-  border: none;
-  height: 34px;
+.dropdown-new {
+  padding: 4em 0;
+  margin-left: auto;
+  margin-bottom: -2em;
 }
 
-.btn-sort-home:hover{
-  color: white;
-  padding: 4px 24px;
-  text-align: center;
-  align-items: center;
-  background: $blue;
-  border: none;
+.dropdown-filter {
+  border: 1px solid $lightblue;
+  border-radius: 8px;
+}
+
+.hide {
+  display: none;
 }

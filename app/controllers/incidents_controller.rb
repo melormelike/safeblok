@@ -25,6 +25,8 @@ class IncidentsController < ApplicationController
     @incidents_per_time = Incident.group(:time).count.sort_by { |_key, value| value }
     @incidents_per_date = Incident.group(:date).count
 
+    @incidents_group = @incidents.order(date: :desc)
+    @incidents_group_area = @incidents.order(neighborhood: :asc)
     # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
     @markers = @incidents.geocoded.map do |incident|
       {

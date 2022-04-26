@@ -1,24 +1,71 @@
+<script>
+function changeFilter(filter) {
+  // debugger
+  // console.log("filter:", filter)
 
-<div>
-  <%= form_tag incidents_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Date, Neighborhood"%>
-    <%= submit_tag "Sort by", class: "btn btn-sort-home" %>
-  <% end %>
+  if (filter === "neighborhood") {
+      const defaultList = document.querySelector(".default");
+      defaultList.classList.add("hide");
+
+      const areaList = document.querySelector(".date-filter");
+      areaList.classList.add("hide");
+      const neighborhoodList = document.querySelector(".area-filter");
+      neighborhoodList.classList.remove("hide");
+
+  } else if (filter === "date") {
+      const defaultList = document.querySelector(".default");
+      defaultList.classList.add("hide");
+      const neighborhoodList = document.querySelector(".area-filter");
+      neighborhoodList.classList.add("hide");
+      const areaList = document.querySelector(".date-filter");
+      areaList.classList.remove("hide");
+  }
+
+}
+
+</script>
+
+<div class="dropdown-new">
+  <label for="filter">Sort by</label>
+  <select name="filter" class="dropdown-filter" id="filter" onchange="changeFilter(this.value)">
+    <option value="neighborhood">Neighborhood</option>
+    <option value="date">Date</option>
+  </select>
 </div>
 
-
 <%#= link_to incident_path(incident) do %>
-<% @incidents.each do |incident| %>
-  <div class="incidentlist-card">
-    <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
-    <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
-    <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
-    <p><strong>Category:</strong> <%= incident.category %></p>
-    <p><strong>Description:</strong> <%= incident.description %></p>
-  </div>
-<% end %>
-
+<%# if params[:query].present? && params[:query] == "date" %>
+<%#= link_to incident_path(incident) do %>
+<div class="date-filter hide">
+  <% @incidents_group.each do |incident| %>
+    <div class="incidentlist-card">
+      <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+      <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+      <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+      <p><strong>Category:</strong> <%= incident.category %></p>
+    </div>
+  <% end %>
+</div>
+<%# end %>
+<%# elsif params[:query].present? && params[:query] == "neighborhood" %>
+<div class="area-filter hide">
+  <%@incidents_group_area.each do |incident|%>
+    <div class="incidentlist-card">
+      <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+      <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+      <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+      <p><strong>Category:</strong> <%= incident.category %></p>
+    </div>
+  <% end %>
+</div>
+<div class="default">
+  <%@incidents.each do |incident|%>
+      <div class="incidentlist-card">
+        <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+        <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+        <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+        <p><strong>Category:</strong> <%= incident.category %></p>
+      </div>
+      <% end %>
+</div>
 <%# end %>
