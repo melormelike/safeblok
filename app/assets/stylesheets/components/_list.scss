@@ -1,6 +1,7 @@
+
 .incidentlist-card {
   padding: 6px;
-  background-color: $white;
+  background-color: $lightgray;
   border-radius: 8px;
   border-color: 1px solid $lightblue;
   // width: 365px;
@@ -35,4 +36,84 @@
   align-items: center;
   background: $blue;
   border: none;
+}
+.dropdown {
+	a {
+		text-decoration: none;
+	}
+
+	[data-toggle="dropdown"] {
+		position: relative;
+		display: block;
+		color: white;
+		background: $blue;
+		//@include double-shadow($blue);
+		//@include hover-style($blue);
+		//@include text-shadow(0 -1px 0 rgba(0,0,0,0.3));
+		padding: 10px;
+    margin-top: 50px;
+    border-radius: 8px;
+    margin-bottom: 20px
+
+	}
+	.icon-arrow {
+		position: absolute;
+		display: block;
+		font-size: 0.7em;
+		color: #fff;
+		top: 14px;
+		right: 10px;
+
+		&.open {
+			transform: rotate(-180deg);
+			//@include transition(transform .6s);
+		}
+		&.close {
+			transform: rotate(0deg);
+			//@include transition(transform .6s);
+		}
+
+		&:before {
+			content: '\25BC';
+		}
+	}
+
+	.dropdown-menu {
+		max-height: 0;
+		overflow: hidden;
+		//@include ul-nostyle;
+
+		li {
+			padding: 0;
+
+			a {
+				display: block;
+				color: darken($gray, 50%);
+				background: $gray;
+				//@include double-shadow($lightgray);
+				//@include hover-style($lightgray);
+				//@include text-shadow(0 -1px 0 rgba(255,255,255,0.3));
+				padding: 10px 10px;
+			}
+		}
+	}
+
+	.show, .hide {
+		//@include transform-origin(50%, 0%);
+	}
+
+	.show {
+		display: block;
+		max-height: 9999px;
+		//@include transform(scaleY(1));
+		//@include animation(showAnimation .5s ease-in-out);
+		//@include transition(max-height 1s ease-in-out);
+	}
+
+	.hide {
+		max-height: 0;
+		//@include transform(scaleY(0));
+		//@include animation(hideAnimation .4s ease-out);
+		//@include transition(max-height .6s ease-out);
+	}
 }

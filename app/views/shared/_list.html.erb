@@ -1,12 +1,10 @@
 
-<div>
-  <%= form_tag incidents_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Date, Neighborhood"%>
-    <%= submit_tag "Sort by", class: "btn btn-sort-home" %>
-  <% end %>
+<div class="dropdown">
+  <a href="#" data-toggle="dropdown">Sort by <i class="icon-arrow"></i></a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Date</a></li>
+      <li><a href="#">Neighborhood</a></li>
+    </ul>
 </div>
 
 
