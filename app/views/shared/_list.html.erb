@@ -59,7 +59,8 @@ function changeFilter(filter) {
   <% end %>
 </div>
 <div class="default">
-  <%@incidents.each do |incident|%>
+  <p class="default-incident-header"><%= pluralize @incidents.size,"incident"%></p>
+  <%@incidents.order(created_at: :desc).each do |incident|%>
       <div class="incidentlist-card">
         <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
         <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
