@@ -1,9 +1,9 @@
 
 .incidentlist-card {
   padding: 6px;
-  background-color: $lightblue;
+  background-color: white;
   border-radius: 8px;
-  border: 1px solid $white;
+  //border: 1px solid $lightblue;
   // width: 365px;
   height: 30%;
   display: block;
@@ -28,4 +28,8 @@
 
 .hide {
   display: none;
+}
+.default-incident-header {
+  margin-bottom: 1 em;
+  font-weight: bold;
 }
