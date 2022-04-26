@@ -1,26 +1,42 @@
 <script>
 function changeFilter(filter) {
-  console.log("FILTER:", filter)
-  // var element = document.getElementById("url");
-  // element.value = language;
-  // element.innerHTML = language;
+  // debugger
+  // console.log("filter:", filter)
+
+  if (filter === "neighborhood") {
+      const defaultList = document.querySelector(".default");
+      defaultList.classList.add("hide");
+
+      const areaList = document.querySelector(".date-filter");
+      areaList.classList.add("hide");
+      const neighborhoodList = document.querySelector(".area-filter");
+      neighborhoodList.classList.remove("hide");
+
+  } else if (filter === "date") {
+      const defaultList = document.querySelector(".default");
+      defaultList.classList.add("hide");
+      const neighborhoodList = document.querySelector(".area-filter");
+      neighborhoodList.classList.add("hide");
+      const areaList = document.querySelector(".date-filter");
+      areaList.classList.remove("hide");
+  }
+
 }
- 
+
 </script>
+
 <div class="dropdown-new">
-  <label for="filter">Choose a filter:</label>
-  <select name="filter" id="filter" onchange="changeFilter(this.value)">
+  <label for="filter">Sort by</label>
+  <select name="filter" class="dropdown-filter" id="filter" onchange="changeFilter(this.value)">
     <option value="neighborhood">Neighborhood</option>
     <option value="date">Date</option>
-  </select> ̰
+  </select>
 </div>
-
-
 
 <%#= link_to incident_path(incident) do %>
 <%# if params[:query].present? && params[:query] == "date" %>
 <%#= link_to incident_path(incident) do %>
-<div class="date-filter">
+<div class="date-filter hide">
   <% @incidents_group.each do |incident| %>
     <div class="incidentlist-card">
       <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
@@ -32,7 +48,7 @@ function changeFilter(filter) {
 </div>
 <%# end %>
 <%# elsif params[:query].present? && params[:query] == "neighborhood" %>
-<div class="area-filter">
+<div class="area-filter hide">
   <%@incidents_group_area.each do |incident|%>
     <div class="incidentlist-card">
       <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
@@ -41,5 +57,15 @@ function changeFilter(filter) {
       <p><strong>Category:</strong> <%= incident.category %></p>
     </div>
   <% end %>
+</div>
+<div class="default">
+  <%@incidents.each do |incident|%>
+      <div class="incidentlist-card">
+        <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+        <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+        <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+        <p><strong>Category:</strong> <%= incident.category %></p>
+      </div>
+      <% end %>
 </div>
 <%# end %>
