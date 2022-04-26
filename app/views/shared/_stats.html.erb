@@ -1,61 +1,62 @@
 <div class="my-container", data-controller="charts">
 
-<h1>Incidents - Stats</h1>
+  <h1>Incidents - Stats</h1>
 
-  <div class="cards-incidents-global d-none">
-    <% @incidents_per_location.each do |key, value| %>
-      <div class="card-incident">
-        <p class="card-incident-location-key"><%= key%></p>
-        <p class="card-incident-location-value"><%= value %></p>
+    <div class="cards-incidents-global d-none">
+      <% @incidents_per_location.each do |key, value| %>
+        <div class="card-incident">
+          <p class="card-incident-location-key"><%= key%></p>
+          <p class="card-incident-location-value"><%= value %></p>
+        </div>
+      <% end %>
+      <br>
+      <div class="card-incidents">
+        <p>Most common incidents:</p>
+        <% @incidents_per_category.each do |key, value| %>
+          <div class="card-incident", id="<%= key %>">
+              <p><%= key %></p>
+              <p class="card-incident-category-value"><%= value %></p>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <br>
-    <div class="card-incidents">
-      <p>Most common incidents:</p>
-      <% @incidents_per_category.each do |key, value| %>
-        <div class="card-incident", id="<%= key %>">
-            <p><%= key %></p>
-            <p class="card-incident-category-value"><%= value %></p>
-        </div>
-      <% end %>
+
+      <div class="card-incidents">
+        <p>Time of incidents:</p>
+        <% @incidents_per_time.each do |key, value| %>
+          <div class="card-incident", id="<%= key %>">
+            <p class="card-incident-time-key"><%= key.strftime("%H").to_i %></p>
+            <p class="card-incident-time-value"><%= value %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="card-incidents">
+        <p>Date of incidents:</p>
+        <% @incidents_per_date.each do |key, value| %>
+          <div class="card-incident", id="<%= key %>">
+            <p class="card-incident-date-key"><%= key.strftime("%Y-%m-%d")%></p>
+            <p class="card-incident-date-value"><%= value %></p>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+  <%# CHARTS  %>
+  <div class="charts" data-controller="stats">
+  <%# CHART - LOCATION %>
+    <div class="chart">
+      <canvas id="locationChart" data-stats-target="location"></canvas>
     </div>
 
-    <div class="card-incidents">
-      <p>Time of incidents:</p>
-      <% @incidents_per_time.each do |key, value| %>
-        <div class="card-incident", id="<%= key %>">
-          <p class="card-incident-time-key"><%= key.strftime("%H").to_i %></p>
-          <p class="card-incident-time-value"><%= value %></p>
-        </div>
-      <% end %>
+  <%# CHART - TIME %>
+    <div class="chart">
+      <canvas id="timeChart" data-stats-target="time"></canvas>
     </div>
 
-    <div class="card-incidents">
-      <p>Date of incidents:</p>
-      <% @incidents_per_date.each do |key, value| %>
-        <div class="card-incident", id="<%= key %>">
-          <p class="card-incident-date-key"><%= key.strftime("%Y-%m-%d")%></p>
-          <p class="card-incident-date-value"><%= value %></p>
-        </div>
-      <% end %>
-  </div>
-</div>
-
-<%# CHARTS  %>
-<div class="charts" data-controller="stats">
-<%# CHART - LOCATION %>
-  <div class="chart">
-    <canvas id="locationChart" data-stats-target="location"></canvas>
-  </div>
-
-<%# CHART - TIME %>
-  <div class="chart">
-    <canvas id="timeChart" data-stats-target="time"></canvas>
-  </div>
-
-<%# CHART - DATE %>
-  <div class="chart">
-    <canvas id="dateChart" data-stats-target="date"></canvas>
+  <%# CHART - DATE %>
+    <div class="chart">
+      <canvas id="dateChart" data-stats-target="date"></canvas>
+    </div>
   </div>
 </div>
   <br>
