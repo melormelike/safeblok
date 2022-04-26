@@ -31,7 +31,21 @@ export default class extends Controller {
         },
       })
     );
+
+    setTimeout(() => {
+      this.map.resize()
+    }, 2000);
+
+    document.querySelector("#optionone").addEventListener("click", (e) => {
+      // mainContent.style.display = e.target.checked ? 'block' : 'none';
+      // secondaryContent.style.display = e.target.checked ? 'none' : 'block';
+
+      setTimeout(() => {
+        this.map.resize()
+      }, 2000);
+    })
   }
+
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
