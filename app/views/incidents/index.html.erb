@@ -8,19 +8,19 @@
       <input name="radio" type="radio" value="optiontwo" id="optiontwo">
       <label for="optiontwo" class="right"><i class="fas fa-list-ul"></i></label>
 
-      <span aria-hidden="true" id="toggle-slider" class="<%= "right" if params[:tab] == 'stats'%>"></span>
+      <span aria-hidden="true" id="toggle-slider"></span>
     </div>
   </div>
 
   <%# View #1 - MAP %>
-  <div style="width: 100%; height: 100vh;" class="map <%= "d-none" if params[:tab] != 'map'%>" id="main_content"
+  <div style="width: 100%; height: 100vh;" class="map" id="main_content"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
   <%# View #2 - STATS %>
-  <div class="my-container <%= "d-none" if params[:tab] == 'map'%>" id="secondary_content", data-controller="charts">
+  <div class="my-container" id="secondary_content", data-controller="charts">
     <%#= render 'shared/stats' %>
     <%= render 'shared/list'%>
   </div>
