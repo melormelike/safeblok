@@ -1,5 +1,12 @@
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
+  .phone {
+    min-height: 100vh;
+  }
+  .phone__screen {
+    min-height: 100vh;
+  }
+
   h1 {
     font-size: 24px;
   }
