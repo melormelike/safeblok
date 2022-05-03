@@ -33,28 +33,30 @@ function changeFilter(filter) {
   </select>
 </div>
 
-<%#= link_to incident_path(incident) do %>
 <%# if params[:query].present? && params[:query] == "date" %>
-<%#= link_to incident_path(incident) do %>
 <div class="date-filter hide">
   <% @incidents_group.each do |incident| %>
     <div class="incidentlist-card">
-      <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
-      <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
-      <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
-      <p><strong>Category:</strong> <%= incident.category %></p>
+      <%= link_to incident_path(incident) do %>
+        <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+        <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+        <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+        <p><strong>Category:</strong> <%= incident.category %></p>
+      <% end %>
     </div>
   <% end %>
 </div>
-<%# end %>
+
 <%# elsif params[:query].present? && params[:query] == "neighborhood" %>
 <div class="area-filter hide">
   <%@incidents_group_area.each do |incident|%>
     <div class="incidentlist-card">
-      <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
-      <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
-      <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
-      <p><strong>Category:</strong> <%= incident.category %></p>
+    <%= link_to incident_path(incident) do %>
+        <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+        <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+        <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+        <p><strong>Category:</strong> <%= incident.category %></p>
+    <% end %>
     </div>
   <% end %>
 </div>
@@ -62,11 +64,12 @@ function changeFilter(filter) {
   <p class="default-incident-header"><%= pluralize @incidents.size,"incident"%></p>
   <%@incidents.order(created_at: :desc).each do |incident|%>
       <div class="incidentlist-card">
-        <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
-        <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
-        <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
-        <p><strong>Category:</strong> <%= incident.category %></p>
+        <%= link_to incident_path(incident) do %>
+          <p><strong>Date:</strong> <%= incident.date.strftime("%A, %d %B ") %></p>
+          <p><strong>Time:</strong> <%= incident.time.strftime("%-l:%M %P") %></p>
+          <p><strong>Neighborhood:</strong>  <%= incident.neighborhood %></p>
+          <p><strong>Category:</strong> <%= incident.category %></p>
+        <% end %>
       </div>
       <% end %>
 </div>
-<%# end %>
